@@ -1,0 +1,34 @@
+# Configurando o Ambiente de Trabalho
+
+Antes de iniciarmos a manipulação de dados e as análises, é fundamental garantir que o ambiente computacional esteja configurado corretamente. Para a maioria dos estudantes e profissionais de Estatística, o *RStudio* é o ambiente de desenvolvimento integrado (IDE) mais familiar. A boa notícia é que o *RStudio*, especialmente quando aliado ao *Quarto*, oferece um suporte excelente para a execução de códigos em *Python*.
+
+## O Ambiente *Python* e o pacote *reticulate*
+
+Em alguns casos, especialmente na primeira execução de um script *Python* dentro do *RStudio*, o ambiente pode não estar perfeitamente configurado. Isso ocorre porque o *RStudio* utiliza um pacote chamado *reticulate* para fazer a ponte e integrar o *Python* ao ecossistema do *R.*
+
+O *reticulate* pode acabar criando, de forma automática, um ambiente virtual *Python* próprio, isolado daquele que você eventualmente já tenha instalado em seu sistema operacional. Por conta desse isolamento, esse novo ambiente nem sempre possui todas as bibliotecas necessárias para a análise de dados já pré-instaladas.
+
+
+## Gerenciamento de Bibliotecas com o *pip*
+
+Caso apareçam mensagens de erro indicando que bibliotecas fundamentais como pandas, *jupyter* ou outras não foram encontradas, elas podem ser facilmente adicionadas utilizando o *pip.* O *pip* é o gerenciador de pacotes padrão do *Python*, responsável por baixar, instalar e atualizar bibliotecas externas.
+
+Para realizar a instalação via **Terminal** (aba **Terminal** no *RStudio*, e não no Console), basta executar os seguintes comandos:
+
+```bash
+python -m pip install pandas numpy seaborn matplotlib
+python -m pip install jupyter
+```
+## Instalação Direta em Blocos de Código
+
+Em documentos interativos (como notebooks *Jupyter* ou arquivos *.qmd* do *Quarto*), também é possível executar comandos de terminal diretamente de dentro das células de código (*code chunks*). Para isso, utiliza-se o caractere de exclamação (!) no início da linha.
+
+Por exemplo, o comando a seguir instala a biblioteca pandas diretamente a partir do ambiente de execução do documento, sem a necessidade de abrir o terminal do sistema:
+
+```bash
+!python -m pip install pandas
+```
+
+
+**Dica importante**: Caso o *RStudio* continue apresentando problemas ou pareça estar utilizando uma instalação do *Python* diferente da esperada, pode ser necessário reiniciar a sessão do *R* (*Session* > *Restart R*) para que o reticulate reconheça as novas bibliotecas instaladas. Em geral, após essa configuração inicial e a instalação dos pacotes, o código passará a funcionar normalmente.
+

@@ -1,0 +1,11 @@
+# Prefácio {-}
+
+O presente material consiste na consolidação dos resultados de pesquisa obtidos durante o período de Iniciação Científica, no contexto do projeto **Métodos de Aprendizado Estatístico para Discriminação e Classificação: Aplicações à Indústria 4.0 – Fase 3**. Este documento visa não só o detalhamento dos métodos de coleta de dados via *Web Scraping*, mas também a viabilidade do uso do *Python* para tal, além de destacar as especificidades da linguagem e suas vantagens para o aprendizado de métodos estatísticos e computacionais.
+
+Neste contexto, vale ressaltar que o material é de cunho introdutório, buscando viabilizar o aprendizado do *Python* enquanto linguagem de programação e do *Web Scraping* como técnica poderosa de coleta de dados. Dessa forma, seu foco é desenvolver, no estatístico, o interesse pelos diversos recursos computacionais que podem auxiliá-los enquanto profissionais e estudiosos da área..
+
+A motivação para o desenvolvimento deste material surgiu da necessidade de diversificar as ferramentas de aplicação computacional existentes para analisar dados. A interseção entre a teoria estatística e a aplicação dos métodos se sustenta no casamento entre o rigor matemático e a modernidade computacional. Qualquer das partes que for negligenciada ocasionará problemas ou limitações importantes.
+
+Ademais, é válido ressaltar a seção extra presente no material, desenvolvida com o intuito de explicar a estrutura dos livros digitais, como esse, usando o *Quarto*. Ainda que muitos considerem adequado o uso do *Bookdown* para este tipo de trabalho (o que é totalmente válido, dadas as especificidades do Rmarkdown), o *Quarto* se mostrou uma espécie de sucessor natural muito adequado, apresentando ferramentas modernas e extremamente úteis para detalhes de *layout*, especialmente tratando de documentos compilados em *HTML*.
+
+Por fim, deixo aqui minha gratidão à Universidade Federal de Juiz de Fora (UFJF) pelo ambiente acadêmico. Agradeço, especialmente, ao meu orientador, Professor Doutor Lupércio França Bessegato, pela oportunidade e pelo acompanhamento técnico que possibilitaram o desenvolvimento deste trabalho.

@@ -1,0 +1,32 @@
+project: 
+  type: book
+  output-dir: _book
+  
+book: 
+  title: "Introdução ao Python e Web Scraping"
+  author: "Gabriel Sanábio Mazzetti Affonso"
+  date: today
+  repo-url: https://github.com/GabrielMazzetti/python_book
+  chapters: 
+    - index.qmd
+    - introducao.qmd
+    - config_amb.qmd
+    
+bibliography: referencias.bib
+csl: associacao-brasileira-de-normas-tecnicas.csl
+
+lang: pt-BR
+
+format:
+  html:
+    theme: 
+      light: cosmo
+      dark: darkly
+    toc: TRUE
+    lightbox: TRUE
+    toc-depth: 3
+    code-fold: true 
+  pdf:
+    documentclass: scrreprt
+    geometry: "margin=2.5cm"
+    keep-tex: TRUE

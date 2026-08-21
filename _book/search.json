@@ -1,0 +1,62 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Introdução ao Python e Web Scraping",
+    "section": "",
+    "text": "Prefácio\nO presente material consiste na consolidação dos resultados de pesquisa obtidos durante o período de Iniciação Científica, no contexto do projeto Métodos de Aprendizado Estatístico para Discriminação e Classificação: Aplicações à Indústria 4.0 – Fase 3. Este documento visa não só o detalhamento dos métodos de coleta de dados via Web Scraping, mas também a viabilidade do uso do Python para tal, além de destacar as especificidades da linguagem e suas vantagens para o aprendizado de métodos estatísticos e computacionais.\nNeste contexto, vale ressaltar que o material é de cunho introdutório, buscando viabilizar o aprendizado do Python enquanto linguagem de programação e do Web Scraping como técnica poderosa de coleta de dados. Dessa forma, seu foco é desenvolver, no estatístico, o interesse pelos diversos recursos computacionais que podem auxiliá-los enquanto profissionais e estudiosos da área..\nA motivação para o desenvolvimento deste material surgiu da necessidade de diversificar as ferramentas de aplicação computacional existentes para analisar dados. A interseção entre a teoria estatística e a aplicação dos métodos se sustenta no casamento entre o rigor matemático e a modernidade computacional. Qualquer das partes que for negligenciada ocasionará problemas ou limitações importantes.\nAdemais, é válido ressaltar a seção extra presente no material, desenvolvida com o intuito de explicar a estrutura dos livros digitais, como esse, usando o Quarto. Ainda que muitos considerem adequado o uso do Bookdown para este tipo de trabalho (o que é totalmente válido, dadas as especificidades do Rmarkdown), o Quarto se mostrou uma espécie de sucessor natural muito adequado, apresentando ferramentas modernas e extremamente úteis para detalhes de layout, especialmente tratando de documentos compilados em HTML.\nPor fim, deixo aqui minha gratidão à Universidade Federal de Juiz de Fora (UFJF) pelo ambiente acadêmico. Agradeço, especialmente, ao meu orientador, Professor Doutor Lupércio França Bessegato, pela oportunidade e pelo acompanhamento técnico que possibilitaram o desenvolvimento deste trabalho.",
+    "crumbs": [
+      "Prefácio"
+    ]
+  },
+  {
+    "objectID": "introducao.html",
+    "href": "introducao.html",
+    "title": "1  Introdução",
+    "section": "",
+    "text": "1.1 A importância do Python na Estatística\nNa prática, a estatística contemporânea vai muito além do domínio teórico dos fundamentos, da modelagem probabilística e da inferência. A sociedade atual convive com uma realidade em que os dados são o produto mais valioso existente, além simplesmente de fontes de informação. Dessa forma, observa-se nos últimos anos o surgimento de conceitos como o Big Data, para descrever o fenômeno da quantidade massiva de dados que alteram significamente o fluxo de trabalho do analista de dados, exigindo deste profissional, muitas vezes, muito além da capacidade de analisar dados. É necessário ter aptidão para manusear os dados apropriadamente, buscá-los em diferentes fontes, criar filtros especificos relativos às necessidades de um determinado problema, entre outras habilidades.\nNeste contexto, este material foi elaborado com o intuito de introduzir a linguagem Python no arsenal analítico de estudantes e profissionais de Estatística, demonstrando sua viabilidade e potência para a análise de dados e a automação de rotinas de trabalho.\nTradicionalmente, a linguagem R ocupa um lugar importante na formação do estatístico, por ser uma linguagem vetorizada e já desenvolvida para o trabalho com dados. Porém, apesar do poder do R e seus pacotes nos trabalhos de modelagem de dados e no uso de testes clássicos (paramétricos e não-paramétricos), o Python consolidou-se como uma linguagem extremamente versátil, que permite aplicações robustas (como as de Machine Learning, por exemplo) e a integração de sistemas.\nEm termos de aprendizado, o Python é facilmente assimilado por quem já teve contato com algoritmos, por conta de sua similaridade com linguagens compiladas, como no caso do C++ (exigindo apenas adaptações sintatícas), e com linguagens interpretadas, como o R.\nNa prática, o Python apresenta sua maior vantagem ao analisarmos sua quantidade de usuários e, consequentemente, sua quantidade de bibliotecas desenvolvidas para diferentes aplicações. No contexto da Estatística, destacamos o pandas, para estruturação de dados tabulares, e o numpy, para computação numérica de alta performance. O domínio dessas ferramentas permite ao analista processar grandes volumes de dados com eficiência, além de explorar diferentes possibilidades, como a de romper com a dependência de bancos de dados pré-estruturados através da automatização da coleta de dados via internet.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introdução</span>"
+    ]
+  },
+  {
+    "objectID": "introducao.html#o-escopo-deste-material",
+    "href": "introducao.html#o-escopo-deste-material",
+    "title": "1  Introdução",
+    "section": "1.2 O escopo deste material",
+    "text": "1.2 O escopo deste material\nEste material tem um teor introdutório e prático. Ele não tem a intenção de esgotar as funcionalidades do Python (que seria, inclusive, uma tarefa praticamente impossível), tampouco de aprofundar-se nas teorias estatísticas que fundamentam nossas análises ou na teoria computacional que fundamenta e explica as especificidades da linguagem. O objetivo central é ser uma ponte rápida para profissionais de Estatística compreenderem a linguagem e o ecossistema, e como podem se beneficiar deles.\nNeste âmbito, a abordagem adotada se resume em execução de códigos e análise de resultados práticos, de forma que o conhecimento seja construído sequencialmente, como se segue:\n\nCapítulo 2 - Configurando o Ambiente de Trabalho: Apresenta as instruções necessárias para preparar o ambiente de desenvolvimento, abordando a integração do Python dentro do RStudio (via pacote reticulate) e o gerenciamento de bibliotecas.\nCapítulo 3 - Fundamentos do Python para Análise de Dados: Revisa as operações básicas, tipos de dados e a criação de funções, estabelecendo a base sintática da linguagem.\nCapítulo 4 - Manipulação e Análise Exploratória de Dados: Introduz a biblioteca pandas e a criação de visualizações, utilizando conjuntos de dados clássicos (como Titanic e Iris) para demonstrar o tratamento e a exploração de informações categóricas e numéricas.\nCapítulo 5 - Computação Numérica com NumPy: Foca no uso de arrays multidimensionais e operações vetorizadas, ilustrando seu poder computacional através de simulações estatísticas.\nCapítulo 6 - Coleta de Dados via Web Scraping: Demonstra como construir bases de dados próprias automatizando a extração de informações de páginas da internet, sempre pautado por boas práticas e ética na raspagem de dados.\nCapítulo 7 - Estrutura de Livros Digitais (via Quarto): Explica brevemente a estrutura de arquivos e códigos para o desenvolvimento de livros digitais, utilizando o Rmarkdown para os códigos e textos e a ferramenta Quarto para a compilação.\n\nEspera-se que, ao final deste conteúdo, o estudante ou profissional de Estatística sinta-se confortável para importar, manipular e coletar dados em Python, além de estar apto a construir livros digitais que podem ser ferramentas ainda mais robustas que os relatórios padrão, tendo base sólida para estudos posteriores mais aprofundados nestas ferramentas e suas possibilidades.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introdução</span>"
+    ]
+  },
+  {
+    "objectID": "config_amb.html",
+    "href": "config_amb.html",
+    "title": "2  Configurando o Ambiente de Trabalho",
+    "section": "",
+    "text": "2.1 O Ambiente Python e o pacote reticulate\nAntes de iniciarmos a manipulação de dados e as análises, é fundamental garantir que o ambiente computacional esteja configurado corretamente. Para a maioria dos estudantes e profissionais de Estatística, o RStudio é o ambiente de desenvolvimento integrado (IDE) mais familiar. A boa notícia é que o RStudio, especialmente quando aliado ao Quarto, oferece um suporte excelente para a execução de códigos em Python.\nEm alguns casos, especialmente na primeira execução de um script Python dentro do RStudio, o ambiente pode não estar perfeitamente configurado. Isso ocorre porque o RStudio utiliza um pacote chamado reticulate para fazer a ponte e integrar o Python ao ecossistema do R.\nO reticulate pode acabar criando, de forma automática, um ambiente virtual Python próprio, isolado daquele que você eventualmente já tenha instalado em seu sistema operacional. Por conta desse isolamento, esse novo ambiente nem sempre possui todas as bibliotecas necessárias para a análise de dados já pré-instaladas.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Configurando o Ambiente de Trabalho</span>"
+    ]
+  },
+  {
+    "objectID": "config_amb.html#gerenciamento-de-bibliotecas-com-o-pip",
+    "href": "config_amb.html#gerenciamento-de-bibliotecas-com-o-pip",
+    "title": "2  Configurando o Ambiente de Trabalho",
+    "section": "2.2 Gerenciamento de Bibliotecas com o pip",
+    "text": "2.2 Gerenciamento de Bibliotecas com o pip\nCaso apareçam mensagens de erro indicando que bibliotecas fundamentais como pandas, jupyter ou outras não foram encontradas, elas podem ser facilmente adicionadas utilizando o pip. O pip é o gerenciador de pacotes padrão do Python, responsável por baixar, instalar e atualizar bibliotecas externas.\nPara realizar a instalação via Terminal (aba Terminal no RStudio, e não no Console), basta executar os seguintes comandos:\npython -m pip install pandas numpy seaborn matplotlib\npython -m pip install jupyter",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Configurando o Ambiente de Trabalho</span>"
+    ]
+  },
+  {
+    "objectID": "config_amb.html#instalação-direta-em-blocos-de-código",
+    "href": "config_amb.html#instalação-direta-em-blocos-de-código",
+    "title": "2  Configurando o Ambiente de Trabalho",
+    "section": "2.3 Instalação Direta em Blocos de Código",
+    "text": "2.3 Instalação Direta em Blocos de Código\nEm documentos interativos (como notebooks Jupyter ou arquivos .qmd do Quarto), também é possível executar comandos de terminal diretamente de dentro das células de código (code chunks). Para isso, utiliza-se o caractere de exclamação (!) no início da linha.\nPor exemplo, o comando a seguir instala a biblioteca pandas diretamente a partir do ambiente de execução do documento, sem a necessidade de abrir o terminal do sistema:\n!python -m pip install pandas\nDica importante: Caso o RStudio continue apresentando problemas ou pareça estar utilizando uma instalação do Python diferente da esperada, pode ser necessário reiniciar a sessão do R (Session &gt; Restart R) para que o reticulate reconheça as novas bibliotecas instaladas. Em geral, após essa configuração inicial e a instalação dos pacotes, o código passará a funcionar normalmente.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Configurando o Ambiente de Trabalho</span>"
+    ]
+  }
+]

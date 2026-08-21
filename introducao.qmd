@@ -1,0 +1,34 @@
+# Introdução
+
+Na prática, a estatística contemporânea vai muito além do domínio teórico dos fundamentos, da modelagem probabilística e da inferência. A sociedade atual convive com uma realidade em que os dados são o produto mais valioso existente, além simplesmente de fontes de informação. Dessa forma, observa-se nos últimos anos o surgimento de conceitos como o *Big Data*, para descrever o fenômeno da quantidade massiva de dados que alteram significamente o fluxo de trabalho do analista de dados, exigindo deste profissional, muitas vezes, muito além da capacidade de analisar dados. É necessário ter aptidão para manusear os dados apropriadamente, buscá-los em diferentes fontes, criar filtros especificos relativos às necessidades de um determinado problema, entre outras habilidades.
+
+Neste contexto, este material foi elaborado com o intuito de introduzir a linguagem *Python*  no arsenal analítico de estudantes e profissionais de Estatística, demonstrando sua viabilidade e potência para a análise de dados e a automação de rotinas de trabalho.
+
+
+## A importância do Python na Estatística
+
+Tradicionalmente, a linguagem *R* ocupa um lugar importante na formação do estatístico, por ser uma linguagem vetorizada e já desenvolvida para o trabalho com dados. Porém, apesar do poder do *R* e seus pacotes nos trabalhos de modelagem de dados e no uso de testes clássicos (paramétricos e não-paramétricos), o *Python* consolidou-se como uma linguagem extremamente versátil, que permite aplicações robustas (como as de *Machine Learning*, por exemplo) e a integração de sistemas.
+
+Em termos de aprendizado, o *Python* é facilmente assimilado por quem já teve contato com algoritmos, por conta de sua similaridade com linguagens compiladas, como no caso do *C++* (exigindo apenas adaptações sintatícas), e com linguagens interpretadas, como o *R*.
+
+Na prática, o *Python* apresenta sua maior vantagem ao analisarmos sua quantidade de usuários e, consequentemente, sua quantidade de bibliotecas desenvolvidas para diferentes aplicações. No contexto da Estatística, destacamos o *pandas*, para estruturação de dados tabulares, e o *numpy*, para computação numérica de alta performance. O domínio dessas ferramentas permite ao analista processar grandes volumes de dados com eficiência, além de explorar diferentes possibilidades, como a de romper com a dependência de bancos de dados pré-estruturados através da automatização da coleta de dados via *internet*.
+
+## O escopo deste material
+
+Este material tem um teor introdutório e prático. Ele não tem a intenção de esgotar as funcionalidades do *Python* (que seria, inclusive, uma tarefa praticamente impossível), tampouco de aprofundar-se nas teorias estatísticas que fundamentam nossas análises ou na teoria computacional que fundamenta e explica as especificidades da linguagem. O objetivo central é ser uma ponte rápida para profissionais de Estatística compreenderem a linguagem e o ecossistema, e como podem se beneficiar deles.
+
+Neste âmbito, a abordagem adotada se resume em execução de códigos e análise de resultados práticos, de forma que o conhecimento seja construído sequencialmente, como se segue:
+
+- Capítulo 2 - Configurando o Ambiente de Trabalho: Apresenta as instruções necessárias para preparar o ambiente de desenvolvimento, abordando a integração do *Python* dentro do *RStudio* (via pacote *reticulate*) e o gerenciamento de bibliotecas.
+
+- Capítulo 3 - Fundamentos do *Python* para Análise de Dados: Revisa as operações básicas, tipos de dados e a criação de funções, estabelecendo a base sintática da linguagem.
+
+- Capítulo 4 - Manipulação e Análise Exploratória de Dados: Introduz a biblioteca pandas e a criação de visualizações, utilizando conjuntos de dados clássicos (como *Titanic* e *Iris*) para demonstrar o tratamento e a exploração de informações categóricas e numéricas.
+
+- Capítulo 5 - Computação Numérica com *NumPy*: Foca no uso de arrays multidimensionais e operações vetorizadas, ilustrando seu poder computacional através de simulações estatísticas.
+
+- Capítulo 6 - Coleta de Dados via *Web Scraping*: Demonstra como construir bases de dados próprias automatizando a extração de informações de páginas da internet, sempre pautado por boas práticas e ética na raspagem de dados.
+
+- Capítulo 7 - Estrutura de Livros Digitais (via *Quarto*): Explica brevemente a estrutura de arquivos e códigos para o desenvolvimento de livros digitais, utilizando o *Rmarkdown* para os códigos e textos e a ferramenta *Quarto* para a compilação.
+
+Espera-se que, ao final deste conteúdo, o estudante ou profissional de Estatística sinta-se confortável para importar, manipular e coletar dados em *Python*, além de estar apto a construir livros digitais que podem ser ferramentas ainda mais robustas que os relatórios padrão, tendo base sólida para estudos posteriores mais aprofundados nestas ferramentas e suas possibilidades.

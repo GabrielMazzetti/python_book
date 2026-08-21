@@ -1,0 +1,459 @@
+% Options for packages loaded elsewhere
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  brazilian,
+  letterpaper,
+  DIV=11,
+  numbers=noendperiod]{scrreprt}
+\usepackage{xcolor}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{5}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+% Make \paragraph and \subparagraph free-standing
+\makeatletter
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\makeatother
+
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{241,243,245}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.40,0.45,0.13}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.28,0.35,0.67}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.46,0.62}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.07,0.07,0.07}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+
+
+
+\ifLuaTeX
+\usepackage[bidi=basic]{babel}
+\else
+\usepackage[bidi=default]{babel}
+\fi
+% get rid of language-specific shorthands (see #6817):
+\let\LanguageShortHands\languageshorthands
+\def\languageshorthands#1{}
+
+
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
+
+ 
+
+
+\KOMAoption{captions}{tableheading}
+\makeatletter
+\@ifpackageloaded{bookmark}{}{\usepackage{bookmark}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Índice}
+\else
+  \newcommand\contentsname{Índice}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{Lista de Figuras}
+\else
+  \newcommand\listfigurename{Lista de Figuras}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{Lista de Tabelas}
+\else
+  \newcommand\listtablename{Lista de Tabelas}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figura}
+\else
+  \newcommand\figurename{Figura}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Tabela}
+\else
+  \newcommand\tablename{Tabela}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listagem}
+\newcommand*\listoflistings{\listof{codelisting}{Lista de Listagens}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Introdução ao Python e Web Scraping},
+  pdfauthor={Gabriel Sanábio Mazzetti Affonso},
+  pdflang={pt-BR},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+
+\title{Introdução ao Python e Web Scraping}
+\author{Gabriel Sanábio Mazzetti Affonso}
+\date{2026-08-21}
+\begin{document}
+\maketitle
+
+\renewcommand*\contentsname{Índice}
+{
+\hypersetup{linkcolor=}
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+
+\bookmarksetup{startatroot}
+
+\chapter*{Prefácio}\label{prefuxe1cio}
+\addcontentsline{toc}{chapter}{Prefácio}
+
+\markboth{Prefácio}{Prefácio}
+
+O presente material consiste na consolidação dos resultados de pesquisa
+obtidos durante o período de Iniciação Científica, no contexto do
+projeto \textbf{Métodos de Aprendizado Estatístico para Discriminação e
+Classificação: Aplicações à Indústria 4.0 -- Fase 3}. Este documento
+visa não só o detalhamento dos métodos de coleta de dados via \emph{Web
+Scraping}, mas também a viabilidade do uso do \emph{Python} para tal,
+além de destacar as especificidades da linguagem e suas vantagens para o
+aprendizado de métodos estatísticos e computacionais.
+
+Neste contexto, vale ressaltar que o material é de cunho introdutório,
+buscando viabilizar o aprendizado do \emph{Python} enquanto linguagem de
+programação e do \emph{Web Scraping} como técnica poderosa de coleta de
+dados. Dessa forma, seu foco é desenvolver, no estatístico, o interesse
+pelos diversos recursos computacionais que podem auxiliá-los enquanto
+profissionais e estudiosos da área..
+
+A motivação para o desenvolvimento deste material surgiu da necessidade
+de diversificar as ferramentas de aplicação computacional existentes
+para analisar dados. A interseção entre a teoria estatística e a
+aplicação dos métodos se sustenta no casamento entre o rigor matemático
+e a modernidade computacional. Qualquer das partes que for negligenciada
+ocasionará problemas ou limitações importantes.
+
+Ademais, é válido ressaltar a seção extra presente no material,
+desenvolvida com o intuito de explicar a estrutura dos livros digitais,
+como esse, usando o \emph{Quarto}. Ainda que muitos considerem adequado
+o uso do \emph{Bookdown} para este tipo de trabalho (o que é totalmente
+válido, dadas as especificidades do Rmarkdown), o \emph{Quarto} se
+mostrou uma espécie de sucessor natural muito adequado, apresentando
+ferramentas modernas e extremamente úteis para detalhes de
+\emph{layout}, especialmente tratando de documentos compilados em
+\emph{HTML}.
+
+Por fim, deixo aqui minha gratidão à Universidade Federal de Juiz de
+Fora (UFJF) pelo ambiente acadêmico. Agradeço, especialmente, ao meu
+orientador, Professor Doutor Lupércio França Bessegato, pela
+oportunidade e pelo acompanhamento técnico que possibilitaram o
+desenvolvimento deste trabalho.
+
+\bookmarksetup{startatroot}
+
+\chapter{Introdução}\label{introduuxe7uxe3o}
+
+Na prática, a estatística contemporânea vai muito além do domínio
+teórico dos fundamentos, da modelagem probabilística e da inferência. A
+sociedade atual convive com uma realidade em que os dados são o produto
+mais valioso existente, além simplesmente de fontes de informação. Dessa
+forma, observa-se nos últimos anos o surgimento de conceitos como o
+\emph{Big Data}, para descrever o fenômeno da quantidade massiva de
+dados que alteram significamente o fluxo de trabalho do analista de
+dados, exigindo deste profissional, muitas vezes, muito além da
+capacidade de analisar dados. É necessário ter aptidão para manusear os
+dados apropriadamente, buscá-los em diferentes fontes, criar filtros
+especificos relativos às necessidades de um determinado problema, entre
+outras habilidades.
+
+Neste contexto, este material foi elaborado com o intuito de introduzir
+a linguagem \emph{Python} no arsenal analítico de estudantes e
+profissionais de Estatística, demonstrando sua viabilidade e potência
+para a análise de dados e a automação de rotinas de trabalho.
+
+\section{A importância do Python na
+Estatística}\label{a-importuxe2ncia-do-python-na-estatuxedstica}
+
+Tradicionalmente, a linguagem \emph{R} ocupa um lugar importante na
+formação do estatístico, por ser uma linguagem vetorizada e já
+desenvolvida para o trabalho com dados. Porém, apesar do poder do
+\emph{R} e seus pacotes nos trabalhos de modelagem de dados e no uso de
+testes clássicos (paramétricos e não-paramétricos), o \emph{Python}
+consolidou-se como uma linguagem extremamente versátil, que permite
+aplicações robustas (como as de \emph{Machine Learning}, por exemplo) e
+a integração de sistemas.
+
+Em termos de aprendizado, o \emph{Python} é facilmente assimilado por
+quem já teve contato com algoritmos, por conta de sua similaridade com
+linguagens compiladas, como no caso do \emph{C++} (exigindo apenas
+adaptações sintatícas), e com linguagens interpretadas, como o \emph{R}.
+
+Na prática, o \emph{Python} apresenta sua maior vantagem ao analisarmos
+sua quantidade de usuários e, consequentemente, sua quantidade de
+bibliotecas desenvolvidas para diferentes aplicações. No contexto da
+Estatística, destacamos o \emph{pandas}, para estruturação de dados
+tabulares, e o \emph{numpy}, para computação numérica de alta
+performance. O domínio dessas ferramentas permite ao analista processar
+grandes volumes de dados com eficiência, além de explorar diferentes
+possibilidades, como a de romper com a dependência de bancos de dados
+pré-estruturados através da automatização da coleta de dados via
+\emph{internet}.
+
+\section{O escopo deste material}\label{o-escopo-deste-material}
+
+Este material tem um teor introdutório e prático. Ele não tem a intenção
+de esgotar as funcionalidades do \emph{Python} (que seria, inclusive,
+uma tarefa praticamente impossível), tampouco de aprofundar-se nas
+teorias estatísticas que fundamentam nossas análises ou na teoria
+computacional que fundamenta e explica as especificidades da linguagem.
+O objetivo central é ser uma ponte rápida para profissionais de
+Estatística compreenderem a linguagem e o ecossistema, e como podem se
+beneficiar deles.
+
+Neste âmbito, a abordagem adotada se resume em execução de códigos e
+análise de resultados práticos, de forma que o conhecimento seja
+construído sequencialmente, como se segue:
+
+\begin{itemize}
+\item
+  Capítulo 2 - Configurando o Ambiente de Trabalho: Apresenta as
+  instruções necessárias para preparar o ambiente de desenvolvimento,
+  abordando a integração do \emph{Python} dentro do \emph{RStudio} (via
+  pacote \emph{reticulate}) e o gerenciamento de bibliotecas.
+\item
+  Capítulo 3 - Fundamentos do \emph{Python} para Análise de Dados:
+  Revisa as operações básicas, tipos de dados e a criação de funções,
+  estabelecendo a base sintática da linguagem.
+\item
+  Capítulo 4 - Manipulação e Análise Exploratória de Dados: Introduz a
+  biblioteca pandas e a criação de visualizações, utilizando conjuntos
+  de dados clássicos (como \emph{Titanic} e \emph{Iris}) para demonstrar
+  o tratamento e a exploração de informações categóricas e numéricas.
+\item
+  Capítulo 5 - Computação Numérica com \emph{NumPy}: Foca no uso de
+  arrays multidimensionais e operações vetorizadas, ilustrando seu poder
+  computacional através de simulações estatísticas.
+\item
+  Capítulo 6 - Coleta de Dados via \emph{Web Scraping}: Demonstra como
+  construir bases de dados próprias automatizando a extração de
+  informações de páginas da internet, sempre pautado por boas práticas e
+  ética na raspagem de dados.
+\item
+  Capítulo 7 - Estrutura de Livros Digitais (via \emph{Quarto}): Explica
+  brevemente a estrutura de arquivos e códigos para o desenvolvimento de
+  livros digitais, utilizando o \emph{Rmarkdown} para os códigos e
+  textos e a ferramenta \emph{Quarto} para a compilação.
+\end{itemize}
+
+Espera-se que, ao final deste conteúdo, o estudante ou profissional de
+Estatística sinta-se confortável para importar, manipular e coletar
+dados em \emph{Python}, além de estar apto a construir livros digitais
+que podem ser ferramentas ainda mais robustas que os relatórios padrão,
+tendo base sólida para estudos posteriores mais aprofundados nestas
+ferramentas e suas possibilidades.
+
+\bookmarksetup{startatroot}
+
+\chapter{Configurando o Ambiente de
+Trabalho}\label{configurando-o-ambiente-de-trabalho}
+
+Antes de iniciarmos a manipulação de dados e as análises, é fundamental
+garantir que o ambiente computacional esteja configurado corretamente.
+Para a maioria dos estudantes e profissionais de Estatística, o
+\emph{RStudio} é o ambiente de desenvolvimento integrado (IDE) mais
+familiar. A boa notícia é que o \emph{RStudio}, especialmente quando
+aliado ao \emph{Quarto}, oferece um suporte excelente para a execução de
+códigos em \emph{Python}.
+
+\section{\texorpdfstring{O Ambiente \emph{Python} e o pacote
+\emph{reticulate}}{O Ambiente Python e o pacote reticulate}}\label{o-ambiente-python-e-o-pacote-reticulate}
+
+Em alguns casos, especialmente na primeira execução de um script
+\emph{Python} dentro do \emph{RStudio}, o ambiente pode não estar
+perfeitamente configurado. Isso ocorre porque o \emph{RStudio} utiliza
+um pacote chamado \emph{reticulate} para fazer a ponte e integrar o
+\emph{Python} ao ecossistema do \emph{R.}
+
+O \emph{reticulate} pode acabar criando, de forma automática, um
+ambiente virtual \emph{Python} próprio, isolado daquele que você
+eventualmente já tenha instalado em seu sistema operacional. Por conta
+desse isolamento, esse novo ambiente nem sempre possui todas as
+bibliotecas necessárias para a análise de dados já pré-instaladas.
+
+\section{\texorpdfstring{Gerenciamento de Bibliotecas com o
+\emph{pip}}{Gerenciamento de Bibliotecas com o pip}}\label{gerenciamento-de-bibliotecas-com-o-pip}
+
+Caso apareçam mensagens de erro indicando que bibliotecas fundamentais
+como pandas, \emph{jupyter} ou outras não foram encontradas, elas podem
+ser facilmente adicionadas utilizando o \emph{pip.} O \emph{pip} é o
+gerenciador de pacotes padrão do \emph{Python}, responsável por baixar,
+instalar e atualizar bibliotecas externas.
+
+Para realizar a instalação via \textbf{Terminal} (aba \textbf{Terminal}
+no \emph{RStudio}, e não no Console), basta executar os seguintes
+comandos:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{python} \AttributeTok{{-}m}\NormalTok{ pip install pandas numpy seaborn matplotlib}
+\ExtensionTok{python} \AttributeTok{{-}m}\NormalTok{ pip install jupyter}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Instalação Direta em Blocos de
+Código}\label{instalauxe7uxe3o-direta-em-blocos-de-cuxf3digo}
+
+Em documentos interativos (como notebooks \emph{Jupyter} ou arquivos
+\emph{.qmd} do \emph{Quarto}), também é possível executar comandos de
+terminal diretamente de dentro das células de código (\emph{code
+chunks}). Para isso, utiliza-se o caractere de exclamação (!) no início
+da linha.
+
+Por exemplo, o comando a seguir instala a biblioteca pandas diretamente
+a partir do ambiente de execução do documento, sem a necessidade de
+abrir o terminal do sistema:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{!python} \AttributeTok{{-}m}\NormalTok{ pip install pandas}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Dica importante}: Caso o \emph{RStudio} continue apresentando
+problemas ou pareça estar utilizando uma instalação do \emph{Python}
+diferente da esperada, pode ser necessário reiniciar a sessão do
+\emph{R} (\emph{Session} \textgreater{} \emph{Restart R}) para que o
+reticulate reconheça as novas bibliotecas instaladas. Em geral, após
+essa configuração inicial e a instalação dos pacotes, o código passará a
+funcionar normalmente.
+
+
+
+
+\end{document}
