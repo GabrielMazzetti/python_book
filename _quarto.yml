@@ -11,6 +11,9 @@ book:
     - index.qmd
     - introducao.qmd
     - config_amb.qmd
+    - fundamentos.qmd
+    #- analise_exploratoria.qmd
+    - referencias.qmd
     
 bibliography: referencias.bib
 csl: associacao-brasileira-de-normas-tecnicas.csl

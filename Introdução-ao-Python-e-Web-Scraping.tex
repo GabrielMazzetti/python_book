@@ -135,6 +135,39 @@
 \makeatother
 
 
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
+  \fi
+  % set entry spacing
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
 \ifLuaTeX
 \usepackage[bidi=basic]{babel}
@@ -218,7 +251,7 @@
 
 \title{Introdução ao Python e Web Scraping}
 \author{Gabriel Sanábio Mazzetti Affonso}
-\date{2026-08-21}
+\date{2026-08-29}
 \begin{document}
 \maketitle
 
@@ -452,6 +485,290 @@ diferente da esperada, pode ser necessário reiniciar a sessão do
 reticulate reconheça as novas bibliotecas instaladas. Em geral, após
 essa configuração inicial e a instalação dos pacotes, o código passará a
 funcionar normalmente.
+
+\bookmarksetup{startatroot}
+
+\chapter{Fundamentos}\label{fundamentos}
+
+Neste capítulo, iremos contextualizar a lógica de algoritmos ao
+\emph{Python}, explicando brevemente a sua sintaxe essencial. A lógica
+de programação se mantém a mesma independentemente do ambiente
+computacional, mas detalhes estruturais como a tipagem de dados, a
+delimitação de blocos e a indexação variam significativamente de uma
+linguagem para a outra (Sebesta, 2018).
+
+Enquanto linguagens tipadas estaticamente exigem a declaração prévia do
+tipo de cada variável (seja ela um número inteiro ou um texto), o
+\emph{Python} utiliza a tipagem dinâmica, inferindo o tipo do dado no
+momento de sua execução (Lutz, 2013). Além disso, diferentemente de
+linguagens que utilizam chaves para agrupar comandos, o \emph{Python}
+adota a indentação obrigatória como regra sintática, o que impõe a
+elaboração de códigos padronizados e altamente legíveis. Outro fator de
+atenção para os analistas e desenvolvedores é a indexação: ao contrário
+do \emph{R} (que é também uma linguagem amplamente utilizada no contexto
+de análise de dados e Estatística), onde o primeiro elemento de uma
+estrutura de dados ocupa o índice 1, o \emph{Python} adota a indexação
+baseada em zero (0-based), característica compartilhada com linguagens
+como \emph{C} e o \emph{C++}.
+
+\section{Filosofia, Sintaxe e Tipagem da
+Linguagem}\label{filosofia-sintaxe-e-tipagem-da-linguagem}
+
+Grande parte das linguagens de programação surgem (ou evoluem) focadas
+em otimização de performance para a máquina. Porém, esse não é o caso do
+\emph{Python}, que foi concebido a partir de uma filosofia muito bem
+fundamentada e orientada ao desenvolvedor. O princípio norteador da
+linguagem é o de que um código é lido muito mais vezes do que ele é
+escrito. Portanto, a clareza e a legibilidade devem ser prioridades
+absolutas.
+
+Essa filosofia está muito bem documentada no Zen do \emph{Python} (PEP
+20), um conjunto de princípios que guiam as melhores práticas na
+linguagem, destacando máximas como ``o simples é melhor que o complexo''
+e ``a legibilidade conta'' (Peters, 2004).
+
+Para garantir essa legibilidade de forma estrutural, a sintaxe do
+\emph{Python} elimina o uso de marcadores visuais excessivos, como as
+chaves \texttt{\{\}} ou as expressões \texttt{begin/end} para delimitar
+blocos de código. Em seu lugar, a linguagem adota a indentação
+obrigatória. O recuo da margem esquerda não é meramente uma questão de
+estilo, mas uma regra sintática rígida documentada na \texttt{PEP\ 8}
+(Van Rossum; Warsaw; Coghlan, 2001). Seu objetivo é forçar o programador
+a organizar, hierarquicamente, as operações, resultando em um código
+mais limpo.
+
+Além da sintaxe visual, o \emph{Python} caracteriza-se por uma tipagem
+dinâmica e forte. Dinâmica porque não exige a declaração prévia do tipo
+da variável - a própria linguagem infere se o dado é numérico ou textual
+no momento da atribuição, além de permitir mudanças de valor e de tipo
+durante o processo de desenvolvimento. Forte porque, uma vez inferido o
+tipo, o \emph{Python} não realiza conversões implícitas que possam gerar
+comportamentos inesperados, garantindo a segurança e a consistência das
+operações.
+
+\section{Estruturas de Dados Nativas}\label{estruturas-de-dados-nativas}
+
+Conhecer as estruturas de dados nativas do \emph{Python} é essencial
+para armazenar e organizar informações. As principais coleções embutidas
+na linguagem são as listas (\texttt{list}), as tuplas (\texttt{tuple}),
+os dicionários (\texttt{dict}) e os conjuntos (\texttt{set}).
+
+No contexto da manipulação de dados e da programação geral, a
+\textbf{lista} destaca-se como a estrutura mais versátil e
+frequentemente utilizada. Diferentemente dos vetores atômicos
+encontrados no \emph{R} ou dos \emph{arrays} estáticos comuns no
+\emph{C++}, as listas em \emph{Python} são coleções heterogêneas e
+dinâmicas. Isso significa que uma única lista pode armazenar, de forma
+simultânea, números inteiros, valores reais, textos ou até mesmo outras
+listas em seu interior (Lutz, 2013).
+
+Além da heterogeneidade, as listas são estruturas \textbf{mutáveis}.
+Após sua criação, o programador ou analista pode alterar seu conteúdo em
+tempo de execução sem a necessidade de realocar a estrutura inteira na
+memória. É possível modificar valores existentes através de seus
+índices, adicionar novos elementos ao final da coleção (utilizando o
+método \texttt{append()}) ou remover o último item inserido (através do
+método \texttt{pop()}) (Python Software Foundation, 2026a). Essa
+flexibilidade de manipulação direta torna as listas uma base poderosa
+para o tratamento inicial de dados antes de avançarmos para o uso de
+bibliotecas.
+
+\section{Estruturas de Controle de
+Fluxo}\label{estruturas-de-controle-de-fluxo}
+
+A espinha dorsal de qualquer linguagem de programação é a capacidade de
+direcionar a execução dos algoritmos, através de estruturas de controle
+de fluxo. Destacam-se, nesse contexto, as condições lógicas e os laços
+de repetição, que são amplamente conhecidos e utilizados por quem
+trabalha com códigos, seja qual for o contexto. Em \emph{Python}, as
+estruturas de controle de fluxo seguem a filosofia da linguagem - citada
+neste capítulo - sendo projetadas para serem diretas e facilmente
+legíveis, se comparadas a outras linguagens de programação.
+
+As estruturas condicionais utilizam as palavras-chave \texttt{if},
+\texttt{elif} (uma abreviação de \texttt{else\ if}) e \texttt{else}. A
+condição avaliada não exige o uso de parênteses, e o bloco de código
+subordinado é demarcado de forma simples e intuitiva: através da
+inserção de dois pontos (\texttt{:}) ao final da instrução, seguida da
+já mencionada indentação obrigatória.
+
+No que diz respeito às estruturas de repetição, o \texttt{Python}
+oferece os laços \texttt{while} e \texttt{for}. O laço \texttt{while}
+opera de maneira tradicional, executando um bloco de código enquanto uma
+condição permanecer verdadeira. Contudo, o laço \texttt{for} apresenta
+uma diferença fundamental e vantajosa em relação a linguagens compiladas
+clássicas. Em vez de iterar primariamente sobre uma progressão
+aritmética de índices, o \texttt{for} em \emph{Python} atua como um
+iterador direto sobre os itens de qualquer sequência, como uma lista ou
+uma tupla (Python Software Foundation, 2026a).
+
+No âmbito da análise de dados, por exemplo, essa característica permite
+que o analista percorra os dados de uma coleção diretamente (por
+exemplo, lendo cada observação de uma variável) sem a necessidade de
+gerenciar variáveis contadoras, o que reduz significativamente a chance
+de erros lógicos. Caso uma iteração numérica tradicional seja
+estritamente necessária, a linguagem fornece uma função embutida
+\texttt{range()}, capaz de gerar sequências numéricas de forma
+eficiente. É importante destacar que a função range() não armazena a
+sequência inteira na memória de uma só vez; ela calcula os valores sob
+demanda a cada passo da iteração. Consequentemente, sua complexidade de
+espaço (consumo de memória) é constante, \(O(1)\)\footnote{A notação
+  \(O(1)\) faz parte da chamada ``Notação \emph{Big O}'' (\emph{Big O
+  Notation}), utilizada na Ciência da Computação para descrever
+  matematicamente a eficiência e a escalabilidade de um algoritmo. Uma
+  complexidade de espaço \(O(1)\), ou constante, indica que a quantidade
+  de memória exigida para a execução da tarefa permanece exatamente a
+  mesma, não importando se a entrada possui dez ou dez milhões de
+  elementos.}, independentemente de a sequência possuir dez ou dez
+milhões de elementos (Python Software Foundation, 2026b). Isso evita
+gargalos de performance e torna o código otimizado.
+
+\section{Funções e Ferramentas
+Funcionais}\label{funuxe7uxf5es-e-ferramentas-funcionais}
+
+O processo de desenvolvimento de um algoritmo não apresenta
+\textbf{obrigatoriedade} de práticas que vão além de uma lógica concisa
+e do respeito à sintaxe da linguagem. Porém, a escalabilidade de um
+\emph{software} ou a estrutura de uma análise de dados, por exemplo,
+exigem boas práticas que são fundamentadas no bom uso das funções
+(métodos), antes de partir para estruturas mais complexas. No
+\emph{Python}, a definição de uma função é realizada através da
+palavra-chave \texttt{def}, seguida do nome da função e de seus
+respectivos parâmetros. Assim como nas funções prontas do
+\texttt{Python}, as funções customizadas também exigem, por padrão da
+sintaxe, os parênteses logo após o nome da função. Portanto, os
+parâmetros são criados dentro dos parênteses, e o valor de saída da
+operação, ao final da função, é especificado pelo comando
+\texttt{return}.
+
+Contudo, como citado neste capítulo, o \texttt{Python} não se limita ao
+paradigma procedural; ele incorpora elementos poderosos do paradigma de
+programação funcional. Para evitar a escrita de laços \texttt{for} muito
+extensos ao transformar bases de dados, a linguagem fornece funções de
+alta ordem (\emph{higher-order functions}), sendo as mais notáveis o
+\texttt{map()} e o \texttt{filter()} (Python Software Foundation,
+2026c).
+
+Para aqueles que estão habituados ao uso da linguagem \emph{R}, muito
+usada na Estatística e na análise de dados, essa mecânica é
+conceitualmente idêntica ao uso de funções \texttt{apply()} (como o
+\texttt{lapply()} e o \texttt{sapply()}). O objetivo é o mesmo: permitir
+um processamento de dados mais rápido, conciso e com menos linhas de
+código. O \texttt{map()} aplica uma mesma transformação a todos os itens
+de uma coleção de forma simultânea, enquanto o \texttt{filter()} extrai
+e retorna apenas os elementos que satisfazem uma determinada condição
+lógica (bem próximo do que faz a função \texttt{which()}, no \emph{R}).
+
+Essas ferramentas são ainda mais ágeis quando combinadas com as
+expressões \texttt{lambda}. Uma função \texttt{lambda} é uma função
+anônima --- ou seja, uma função que não precisa ser formalmente nomeada
+com \texttt{def} e que é criada em uma única linha de código, sendo
+ideal para operações rápidas ou descartáveis que serão usadas apenas uma
+vez dentro de um \texttt{map} ou \texttt{filter} (Lutz, 2013).
+
+\section{Aplicação Prática: Manipulação de
+Listas}\label{aplicauxe7uxe3o-pruxe1tica-manipulauxe7uxe3o-de-listas}
+
+No script a seguir, consolidamos todos os fundamentos apresentados neste
+capítulo. O exemplo ilustra desde a manipulação direta de uma lista
+utilizando métodos nativos (como o \texttt{append()} e o
+\texttt{pop()}), até o uso avançado das funções \texttt{map()} e
+\texttt{filter()} associadas a funções anônimas (\texttt{lambda}). Por
+fim, demonstramos a aplicação de uma função customizada, desenvolvida
+com \texttt{def()}, para o cálculo de uma média simples.
+
+Nota-se, também, o uso das chamadas \emph{f-strings}
+(\texttt{f"texto\ \{variável\}"}) dentro da função \texttt{print()}.
+Esse é o método mais moderno e recomendado no \emph{Python} para
+interpretar textos e variáveis na mesma linha, gerando saídas de telas
+mais limpas.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# {-}{-}{-}{-} Definição de uma função customizada {-}{-}{-}{-}}
+\KeywordTok{def}\NormalTok{ media(lista):}
+\NormalTok{    soma }\OperatorTok{=} \BuiltInTok{sum}\NormalTok{(lista)}
+\NormalTok{    quantidade }\OperatorTok{=} \BuiltInTok{len}\NormalTok{(lista)}
+    \ControlFlowTok{return}\NormalTok{ soma }\OperatorTok{/}\NormalTok{ quantidade}
+
+\CommentTok{\# {-}{-}{-}{-} Criação e manipulação direta da lista {-}{-}{-}{-}}
+\NormalTok{valores }\OperatorTok{=}\NormalTok{ [}\DecValTok{10}\NormalTok{, }\DecValTok{20}\NormalTok{, }\DecValTok{30}\NormalTok{, }\DecValTok{40}\NormalTok{]}
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Lista original: }\SpecialCharTok{\{}\NormalTok{valores}\SpecialCharTok{\}}\SpecialStringTok{"}\NormalTok{)}
+
+\CommentTok{\# Uso do append()}
+\NormalTok{valores.append(}\DecValTok{50}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Após append (adicionar 50): }\SpecialCharTok{\{}\NormalTok{valores}\SpecialCharTok{\}}\SpecialStringTok{"}\NormalTok{)}
+
+\CommentTok{\# Uso do pop()}
+\NormalTok{valores.pop()}
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Após pop (remover último elemento): }\SpecialCharTok{\{}\NormalTok{valores}\SpecialCharTok{\}}\SpecialStringTok{"}\NormalTok{)}
+
+\CommentTok{\# {-}{-}{-}{-} Uso de ferramentas funcionais (map, filter e lambda) {-}{-}{-}{-}}
+
+\CommentTok{\# Uso do map() com lambda}
+\NormalTok{valores\_dobrados }\OperatorTok{=} \BuiltInTok{list}\NormalTok{(}\BuiltInTok{map}\NormalTok{(}\KeywordTok{lambda}\NormalTok{ x: x }\OperatorTok{*} \DecValTok{2}\NormalTok{, valores))}
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Valores dobrados com map: }\SpecialCharTok{\{}\NormalTok{valores\_dobrados}\SpecialCharTok{\}}\SpecialStringTok{"}\NormalTok{)}
+
+\CommentTok{\# Uso do filter() com lambda}
+\NormalTok{valores\_filtrados }\OperatorTok{=} \BuiltInTok{list}\NormalTok{(}\BuiltInTok{filter}\NormalTok{(}\KeywordTok{lambda}\NormalTok{ x: x }\OperatorTok{\textgreater{}} \DecValTok{20}\NormalTok{, valores))}
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Valores \textgreater{} 20 com filter: }\SpecialCharTok{\{}\NormalTok{valores\_filtrados}\SpecialCharTok{\}}\SpecialStringTok{"}\NormalTok{)}
+
+\CommentTok{\# {-}{-}{-}{-} Aplicação da função customizada {-}{-}{-}{-}}
+\NormalTok{resultado }\OperatorTok{=}\NormalTok{ media(valores)}
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Média final dos valores originais: }\SpecialCharTok{\{}\NormalTok{resultado}\SpecialCharTok{\}}\SpecialStringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Lista original: [10, 20, 30, 40]
+Após append (adicionar 50): [10, 20, 30, 40, 50]
+Após pop (remover último elemento): [10, 20, 30, 40]
+Valores dobrados com map: [20, 40, 60, 80]
+Valores > 20 com filter: [30, 40]
+Média final dos valores originais: 25.0
+\end{verbatim}
+
+\bookmarksetup{startatroot}
+
+\chapter{Referências}\label{referuxeancias}
+
+\phantomsection\label{refs}
+\begin{CSLReferences}{0}{1}
+\bibitem[\citeproctext]{ref-lutz2013learning}
+LUTZ, Mark. \textbf{Learning Python: Powerful Object-Oriented
+Programming}. 5. ed. \emph{{[}S.l.{]}}: O'Reilly Media, Inc., 2013.
+
+\bibitem[\citeproctext]{ref-peters2004pep20}
+PETERS, Tim. \textbf{PEP 20: The Zen of Python}. \emph{{[}S.l.{]}}:
+Python Software Foundation, 2004. Disponível em:
+\textless{}\url{https://peps.python.org/pep-0020/}\textgreater.
+
+\bibitem[\citeproctext]{ref-python2026tutorial}
+PYTHON SOFTWARE FOUNDATION.
+\textbf{\href{https://docs.python.org/3/tutorial/datastructures.html}{The
+Python Tutorial: Data Structures}}. \emph{{[}S.l.: S.n.{]}}.
+
+\bibitem[\citeproctext]{ref-python2026ranges}
+PYTHON SOFTWARE FOUNDATION.
+\textbf{\href{https://docs.python.org/3/library/stdtypes.html\#ranges}{Built-in
+Types - Ranges}}. \emph{{[}S.l.: S.n.{]}}.
+
+\bibitem[\citeproctext]{ref-python2026builtin}
+PYTHON SOFTWARE FOUNDATION.
+\textbf{\href{https://docs.python.org/3/library/functions.html}{Built-in
+Functions}}. \emph{{[}S.l.: S.n.{]}}.
+
+\bibitem[\citeproctext]{ref-sebesta2018conceitos}
+SEBESTA, Robert W. \textbf{Conceitos de Linguagens de Programação}. 11.
+ed. \emph{{[}S.l.{]}}: Bookman Editora, 2018.
+
+\bibitem[\citeproctext]{ref-vanrossum2001pep8}
+VAN ROSSUM, Guido; WARSAW, Barry; COGHLAN, Nick. \textbf{PEP 8: Style
+Guide for Python Code}. \emph{{[}S.l.{]}}: Python Software Foundation,
+2001. Disponível em:
+\textless{}\url{https://peps.python.org/pep-0008/}\textgreater.
+
+\end{CSLReferences}
 
 
 
