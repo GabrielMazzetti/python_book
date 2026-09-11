@@ -251,7 +251,7 @@
 
 \title{Introdução ao Python e Web Scraping}
 \author{Gabriel Sanábio Mazzetti Affonso}
-\date{2026-08-29}
+\date{2026-09-05}
 \begin{document}
 \maketitle
 
@@ -522,10 +522,10 @@ linguagem é o de que um código é lido muito mais vezes do que ele é
 escrito. Portanto, a clareza e a legibilidade devem ser prioridades
 absolutas.
 
-Essa filosofia está muito bem documentada no Zen do \emph{Python} (PEP
-20), um conjunto de princípios que guiam as melhores práticas na
-linguagem, destacando máximas como ``o simples é melhor que o complexo''
-e ``a legibilidade conta'' (Peters, 2004).
+Essa filosofia está muito bem documentada no Zen do \emph{Python}
+(\texttt{PEP\ 20}), um conjunto de princípios que guiam as melhores
+práticas na linguagem, destacando máximas como ``o simples é melhor que
+o complexo'' e ``a legibilidade conta'' (Peters, 2004).
 
 Para garantir essa legibilidade de forma estrutural, a sintaxe do
 \emph{Python} elimina o uso de marcadores visuais excessivos, como as
@@ -730,13 +730,322 @@ Média final dos valores originais: 25.0
 
 \bookmarksetup{startatroot}
 
+\chapter{\texorpdfstring{Análise Exploratória e Manipulação de Dados em
+\emph{Python}}{Análise Exploratória e Manipulação de Dados em Python}}\label{anuxe1lise-exploratuxf3ria-e-manipulauxe7uxe3o-de-dados-em-python}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+Chegamos no ponto-chave de qualquer análise de dados. Antes da
+modelagem, da inferência e da extração de resultados estatísticos, é a
+etapa exploratória que contextualiza o analista. Sem a compreensão
+prévia do cenário, qualquer procedimento será puramente matemático:
+exato em termos teóricos, porém vazio de informação aplicável ou
+interpretável. A função da Estatística é justamente atribuir significado
+aos dados, contando a sua história por meio de metodologias robustas e
+bem fundamentadas.
+
+Dessa maneira, é preciso compreender a essência das informações em mãos.
+É através da Análise Exploratória de Dados (AED) que esse processo ganha
+vida e, no ecossistema \emph{Python}, ele é conduzido primordialmente
+com o suporte de bibliotecas especializadas na manipulação e
+visualização de estruturas tabulares\^{}{[}Uma estrutura tabular
+refere-se à organização bidimensional dos dados em formato de tabela. Na
+terminologia estatística, equivale a uma matriz de dados, onde cada
+linha representa uma observação (ou registro) e cada coluna representa
+uma variável (ou atributo) de interesse.
+
+\section{\texorpdfstring{A Biblioteca \emph{Pandas} e as Estruturas de
+Dados}{A Biblioteca Pandas e as Estruturas de Dados}}\label{a-biblioteca-pandas-e-as-estruturas-de-dados}
+
+Durante muito tempo, a manipulação de dados tabulares não era uma tarefa
+trivial em \emph{Python}, sendo outras linguagens --- como o \emph{R}
+--- preferidas para análises estatísticas. Para suprir a necessidade de
+ferramentas analíticas flexíveis e de alta performance, o pesquisador
+Wes McKinney iniciou, em 2008, o desenvolvimento da biblioteca
+\texttt{pandas}. Hoje, ela se consolidou como o padrão ouro da indústria
+para a limpeza, transformação e análise de dados em \emph{Python}
+(McKinney, 2022). O ecossistema do \texttt{pandas} é construído sobre
+duas estruturas de dados fundamentais: a \texttt{Series} e o
+\texttt{DataFrame}.
+
+Uma \texttt{Series} pode ser definida como um vetor unidimensional
+(semelhante a uma coluna de uma tabela) capaz de armazenar qualquer tipo
+de dado, acompanhada por um vetor de rótulos chamado de índice
+(\emph{index}).
+
+Já o \texttt{DataFrame} --- a estrutura principal da biblioteca --- é um
+objeto bidimensional tabular. Para o estatístico, ele pode ser
+compreendido como a equivalência exata de um \texttt{data.frame} na
+linguagem \emph{R} ou de uma planilha eletrônica estruturada.
+Matematicamente, um \texttt{DataFrame} é essencialmente um dicionário
+onde cada coluna é uma \texttt{Series} que compartilha o mesmo índice
+posicional (McKinney, 2022).
+
+Apesar da semelhança teórica com o \emph{R}, a manipulação dessas
+estruturas apresenta peculiaridades sintáticas importantes. Enquanto no
+\emph{R} a indexação se inicia em 1, a do \texttt{pandas} segue a regra
+do \emph{Python} (baseada em zero), e a seleção explícita de dados é
+intermediada por métodos específicos da biblioteca, como os
+localizadores \texttt{.loc} (para rótulos) e \texttt{.iloc} (para
+posições inteiras). A partir dessa estrutura bidimensional, o analista
+ganha acesso imediato a métodos otimizados para a seleção de colunas,
+filtragem de linhas, criação de novas variáveis e tratamento de valores
+ausentes.
+
+\section{\texorpdfstring{Importação e Tratamento de Dados (\emph{Data
+Wrangling})}{Importação e Tratamento de Dados (Data Wrangling)}}\label{importauxe7uxe3o-e-tratamento-de-dados-data-wrangling}
+
+Antes que qualquer inferência estatística ou visualização seja possível,
+os dados brutos precisam ser carregados para a memória e rigorosamente
+limpos. Na comunidade analítica, esse processo de estruturação e
+higienização é frequentemente chamado de \emph{Data Wrangling}.
+
+O primeiro passo é a importação dos dados. O \texttt{pandas} oferece
+diversas opções para a leitura de dados, sendo o método
+\texttt{pd.read\_csv()} o mais trivial deles. Ao contrário das funções
+básicas de leitura em outras linguagens, o pandas possui um motor de
+inferência de tipos altamente otimizado, lidando de forma automática com
+a alocação de memória para variáveis numéricas, textuais ou séries
+temporais no momento da leitura (VanderPlas, 2016).
+
+Uma vez importada a matriz de dados, é muito comum nos depararmos com
+células de valores ausentes (\emph{missing values}). No \emph{R}, estes
+valores são representados como \texttt{NA}, enquanto no \emph{Python}
+eles são representados como \texttt{NaN}. Ambos representam a mesma
+coisa, mudando apenas a forma de apresentação. É evidente que o
+tratamento de valores ausentes é um tópico de muita discussão teórica na
+Estatística, já que alguns métodos, como o de preenchê-los com a média,
+por exemplo, podem nos levar a subestimar a variância em alguns casos, o
+que introduziria um viés na análise dos dados. Portanto, este tipo de
+tratamento deve sempre ser realizado com atenção considerando que ele
+não depende apenas da aplicação de funções computacionais.
+
+Neste contexto, dado que o analista fez, previamente, uma análise
+robusta que garanta a viabilidade de algum método de preenchimento de
+valores ausentes, o \texttt{pandas} oferece ótimas ferramentas práticas
+para a aplicação dos métodos: a função \texttt{dropna()} permite a
+exclusão direta das observações ou variáveis incompletas, enquanto a
+\texttt{fillna()} viabiliza técnicas de imputação, como o preenchimento
+de falhas utilizando a média, a mediana ou o último valor válido
+observado da respectiva série.
+
+Outro pilar crítico do Data Wrangling é o cruzamento de bases
+relacionais. Projetos reais raramente dependem de um único arquivo
+isolado; é frequente a necessidade de unir tabelas distintas por meio de
+variáveis-chave, utilizando a função \texttt{pd.merge()}. Nesta fase, a
+integridade lógica da base final deve ser a prioridade. Como regra
+fundamental de validação de dados em junções, caso ocorram discrepâncias
+ou identificadores duplicados ao combinar duas bases, os valores
+oriundos da primeira tabela (considerada a base primária ou de maior
+confiabilidade) devem sempre prevalecer. No \emph{Python}, esse controle
+lógico rigoroso é facilitado pela arquitetura de \emph{joins} do
+\texttt{pandas} e por métodos de alinhamento de índices, garantindo que
+o tratamento de duplicidades ou conflitos não comprometa a informação
+original mais segura.
+
+\section{Visualização dos Dados}\label{visualizauxe7uxe3o-dos-dados}
+
+A qualidade de visualização dos dados é essencial na Estatística. É
+através dos recursos gráficos que podemos identificar tendências,
+anomalias e até mesmo distribuições. A visualização constitui a fase
+inicial de qualquer análise descritiva dos dados, mas não se limita a
+apenas isso. É comum, por exemplo, utilizar o QQ-plot para avaliar a
+normalidade dos resíduos de um modelo, de forma a dar suporte aos testes
+não-paramétricos que podem levar o analista à conclusões equivocadas em
+alguns casos, se utilizados de forma isolada. É justamente por este
+motivo que a utilização de mais de um recurso é sempre recomendada para
+testar pressuposições teóricas importantes.
+
+No âmbito visual, o \emph{Python} conta com bibliotecas muito poderosas.
+São elas, principalmente, o \texttt{matplotlib} e o \texttt{Seaborn}. O
+\texttt{matplotlib} atua como o motor estrutural da linguagem. Ele é
+responsável por instanciar e desenhar os elementos fundamentais da
+interface gráfica, como a figura (a ``tela'' em branco), os eixos
+cartesianos, as marcações e as escalas (Hunter, 2007). Por ser uma
+ferramenta de baixo nível (termo que, na computação, refere-se à menor
+distância conceitual entre o código e a máquina, indicando a necessidade
+de especificar instruções mais minuciosas, e não uma avaliação sobre a
+qualidade da ferramenta) e extremamente detalhista, ele exige uma
+quantidade considerável de código para gerar representações
+esteticamente polidas, assemelhando-se aos pacotes base de gráficos do R
+(como a função \texttt{plot()}).
+
+Para suprir a necessidade de gráficos estatísticos mais expressivos e
+com menos linhas de código, surgiu o \texttt{seaborn}. Construída
+nativamente sobre o \texttt{matplotlib}, essa biblioteca funciona como
+uma interface declarativa de alto nível, sendo perfeitamente integrada
+aos objetos da biblioteca \texttt{pandas} (Waskom, 2021).
+
+O grande diferencial do \texttt{seaborn} para o analista de dados é a
+abstração de complexidades estruturais somada à automatização de
+agregações estatísticas. Em muitas de suas funções, a biblioteca calcula
+e exibe intervalos de confiança de forma automática ao agregar dados.
+Além disso, o \texttt{seaborn} traz paletas de cores nativas
+fundamentadas na teoria da percepção visual, garantindo que as
+distinções categóricas e as intensidades contínuas sejam compreendidas
+de maneira intuitiva e sem vieses de leitura.
+
+\section{Estudos de Caso Práticos}\label{estudos-de-caso-pruxe1ticos}
+
+Para consolidar os conceitos de \emph{Data Wrangling} e visualização,
+aplicaremos as ferramentas do pandas e do \texttt{seaborn} em dois
+conjuntos de dados clássicos na literatura estatística e no aprendizado
+de máquina: a base \texttt{Titanic} (focada em dados categóricos e taxas
+de sobrevivência) e a base \texttt{Iris} (focada em dados contínuos e
+distribuições dimensionais).
+
+Para facilitar a reprodutibilidade dos códigos a seguir, utilizaremos as
+versões dessas bases que já vêm nativamente embutidas na biblioteca
+\texttt{seaborn}.
+
+\subsection{\texorpdfstring{Análise de Dados Categóricos:
+\emph{Titanic}}{Análise de Dados Categóricos: Titanic}}\label{anuxe1lise-de-dados-categuxf3ricos-titanic}
+
+O conjunto de dados do naufrágio do \texttt{Titanic} é ideal para a
+exploração de tabelas de contingência e distribuições de frequência. No
+\emph{Python}, a função \texttt{pd.crosstab()} do pandas atua de forma
+muito semelhante à clássica função \texttt{table()} do \emph{R},
+permitindo o cruzamento rápido entre variáveis qualitativas.
+
+No script abaixo, importamos as bibliotecas necessárias, carregamos os
+dados, removemos rapidamente os valores ausentes de uma coluna de
+interesse estrutural e geramos a tabela de contingência cruzando a
+classe do passageiro com o status de sobrevivência. Em seguida,
+utilizamos o seaborn para criar um gráfico de barras.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ pandas }\ImportTok{as}\NormalTok{ pd}
+\ImportTok{import}\NormalTok{ matplotlib.pyplot }\ImportTok{as}\NormalTok{ plt}
+\ImportTok{import}\NormalTok{ seaborn }\ImportTok{as}\NormalTok{ sns}
+
+\CommentTok{\# Carregando a base de dados}
+\NormalTok{titanic }\OperatorTok{=}\NormalTok{ sns.load\_dataset(}\StringTok{\textquotesingle{}titanic\textquotesingle{}}\NormalTok{)}
+
+\CommentTok{\# Tratamento rápido (Data Wrangling): Removendo linhas sem informação de embarque}
+\NormalTok{titanic\_limpo }\OperatorTok{=}\NormalTok{ titanic.dropna(subset}\OperatorTok{=}\NormalTok{[}\StringTok{\textquotesingle{}embark\_town\textquotesingle{}}\NormalTok{])}
+
+\CommentTok{\# Tabela de contingência (Classe vs Sobrevivência)}
+\NormalTok{tabela\_sobrevivencia }\OperatorTok{=}\NormalTok{ pd.crosstab(}
+\NormalTok{    titanic\_limpo[}\StringTok{\textquotesingle{}class\textquotesingle{}}\NormalTok{], }
+\NormalTok{    titanic\_limpo[}\StringTok{\textquotesingle{}survived\textquotesingle{}}\NormalTok{], }
+\NormalTok{    rownames}\OperatorTok{=}\NormalTok{[}\StringTok{\textquotesingle{}Classe\textquotesingle{}}\NormalTok{], }
+\NormalTok{    colnames}\OperatorTok{=}\NormalTok{[}\StringTok{\textquotesingle{}Sobreviveu?\textquotesingle{}}\NormalTok{]}
+\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Tabela de Contingência {-} Titanic:}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(tabela\_sobrevivencia)}
+
+\CommentTok{\# Configurando e gerando o gráfico com Seaborn}
+\NormalTok{plt.figure(figsize}\OperatorTok{=}\NormalTok{(}\DecValTok{8}\NormalTok{, }\DecValTok{5}\NormalTok{))}
+\NormalTok{sns.countplot(}
+\NormalTok{    data}\OperatorTok{=}\NormalTok{titanic\_limpo, }
+\NormalTok{    x}\OperatorTok{=}\StringTok{\textquotesingle{}class\textquotesingle{}}\NormalTok{, }
+\NormalTok{    hue}\OperatorTok{=}\StringTok{\textquotesingle{}survived\textquotesingle{}}\NormalTok{, }
+\NormalTok{    palette}\OperatorTok{=}\StringTok{\textquotesingle{}Set2\textquotesingle{}}
+\NormalTok{)}
+\NormalTok{plt.title(}\StringTok{"Sobrevivência por Classe de Passageiro"}\NormalTok{)}
+\NormalTok{plt.xlabel(}\StringTok{"Classe"}\NormalTok{)}
+\NormalTok{plt.ylabel(}\StringTok{"Contagem"}\NormalTok{)}
+\NormalTok{plt.show()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Tabela de Contingência - Titanic:
+
+Sobreviveu?    0    1
+Classe               
+First         80  134
+Second        97   87
+Third        372  119
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{analise_exploratoria_files/figure-pdf/cell-2-output-2.png}}
+
+\subsection{\texorpdfstring{Análise de Dados Contínuos:
+\emph{Iris}}{Análise de Dados Contínuos: Iris}}\label{anuxe1lise-de-dados-contuxednuos-iris}
+
+A base \texttt{Iris}, introduzida pelo estatístico \emph{Ronald Fisher}
+em 1936, é o exemplo definitivo para o estudo de distribuições contínuas
+e análise de correlação entre múltiplas variáveis numéricas (como
+comprimento e largura de pétalas e sépalas).
+
+Antes de partirmos para a visualização, a extração de métricas de
+posição e dispersão é o passo primário para a compreensão de variáveis
+contínuas. No \emph{R}, essa tarefa é comumente realizada através da
+função \texttt{summary()}. No \emph{Python}, a biblioteca
+\texttt{pandas} fornece o método \texttt{.describe()}, que calcula
+instantaneamente a contagem, a média, o desvio padrão e os quartis de
+todas as colunas numéricas do \emph{DataFrame}.
+
+Enquanto as métricas descritivas resumem os dados, a exploração de dados
+contínuos exige uma abordagem visual para a identificação de padrões
+lineares ou de agrupamentos (\emph{clusters}). O gráfico de dispersão
+(\emph{scatterplot}) é a ferramenta analítica primária para esse fim. O
+\texttt{seaborn} permite estratificar esses pontos facilmente através do
+parâmetro \texttt{hue}, colorindo as observações com base em uma
+variável categórica, como a espécie da flor.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Carregando a base de dados}
+\NormalTok{iris }\OperatorTok{=}\NormalTok{ sns.load\_dataset(}\StringTok{\textquotesingle{}iris\textquotesingle{}}\NormalTok{)}
+
+\CommentTok{\# Extração das métricas descritivas (equivalente ao summary do R)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Resumo Estatístico da Base Iris:}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(iris.describe())}
+
+\CommentTok{\# Configurando e gerando o gráfico de dispersão com Seaborn}
+\NormalTok{plt.figure(figsize}\OperatorTok{=}\NormalTok{(}\DecValTok{8}\NormalTok{, }\DecValTok{5}\NormalTok{))}
+\NormalTok{sns.scatterplot(}
+\NormalTok{    data}\OperatorTok{=}\NormalTok{iris, }
+\NormalTok{    x}\OperatorTok{=}\StringTok{\textquotesingle{}petal\_length\textquotesingle{}}\NormalTok{, }
+\NormalTok{    y}\OperatorTok{=}\StringTok{\textquotesingle{}petal\_width\textquotesingle{}}\NormalTok{, }
+\NormalTok{    hue}\OperatorTok{=}\StringTok{\textquotesingle{}species\textquotesingle{}}\NormalTok{, }
+\NormalTok{    palette}\OperatorTok{=}\StringTok{\textquotesingle{}deep\textquotesingle{}}\NormalTok{,}
+\NormalTok{    s}\OperatorTok{=}\DecValTok{80} \CommentTok{\# Tamanho dos pontos}
+\NormalTok{)}
+\NormalTok{plt.title(}\StringTok{"Relação entre Comprimento e Largura da Pétala"}\NormalTok{)}
+\NormalTok{plt.xlabel(}\StringTok{"Comprimento da Pétala (cm)"}\NormalTok{)}
+\NormalTok{plt.ylabel(}\StringTok{"Largura da Pétala (cm)"}\NormalTok{)}
+\NormalTok{plt.show()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Resumo Estatístico da Base Iris:
+
+       sepal_length  sepal_width  petal_length  petal_width
+count    150.000000   150.000000    150.000000   150.000000
+mean       5.843333     3.057333      3.758000     1.199333
+std        0.828066     0.435866      1.765298     0.762238
+min        4.300000     2.000000      1.000000     0.100000
+25%        5.100000     2.800000      1.600000     0.300000
+50%        5.800000     3.000000      4.350000     1.300000
+75%        6.400000     3.300000      5.100000     1.800000
+max        7.900000     4.400000      6.900000     2.500000
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{analise_exploratoria_files/figure-pdf/cell-3-output-2.png}}
+
+\bookmarksetup{startatroot}
+
 \chapter{Referências}\label{referuxeancias}
 
 \phantomsection\label{refs}
 \begin{CSLReferences}{0}{1}
+\bibitem[\citeproctext]{ref-hunter2007matplotlib}
+HUNTER, John D. Matplotlib: A 2D graphics environment. \textbf{Computing
+in science \& engineering}, v. 9, n. 3, p. 90--95, 2007.
+
 \bibitem[\citeproctext]{ref-lutz2013learning}
 LUTZ, Mark. \textbf{Learning Python: Powerful Object-Oriented
 Programming}. 5. ed. \emph{{[}S.l.{]}}: O'Reilly Media, Inc., 2013.
+
+\bibitem[\citeproctext]{ref-mckinney2022python}
+MCKINNEY, Wes. \textbf{Python for Data Analysis: Data Wrangling with
+pandas, NumPy, and Jupyter}. 3. ed. \emph{{[}S.l.{]}}: O'Reilly Media,
+Inc., 2022.
 
 \bibitem[\citeproctext]{ref-peters2004pep20}
 PETERS, Tim. \textbf{PEP 20: The Zen of Python}. \emph{{[}S.l.{]}}:
@@ -767,6 +1076,14 @@ VAN ROSSUM, Guido; WARSAW, Barry; COGHLAN, Nick. \textbf{PEP 8: Style
 Guide for Python Code}. \emph{{[}S.l.{]}}: Python Software Foundation,
 2001. Disponível em:
 \textless{}\url{https://peps.python.org/pep-0008/}\textgreater.
+
+\bibitem[\citeproctext]{ref-vanderplas2016python}
+VANDERPLAS, Jake. \textbf{Python Data Science Handbook: Essential Tools
+for Working with Data}. \emph{{[}S.l.{]}}: O'Reilly Media, Inc., 2016.
+
+\bibitem[\citeproctext]{ref-waskom2021seaborn}
+WASKOM, Michael L. seaborn: statistical data visualization.
+\textbf{Journal of Open Source Software}, v. 6, n. 60, p. 3021, 2021.
 
 \end{CSLReferences}
 

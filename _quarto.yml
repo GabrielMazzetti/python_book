@@ -12,7 +12,9 @@ book:
     - introducao.qmd
     - config_amb.qmd
     - fundamentos.qmd
-    #- analise_exploratoria.qmd
+    - analise_exploratoria.qmd
+    - comp_numerica.qmd
+    - web_scraping.qmd
     - referencias.qmd
     
 bibliography: referencias.bib

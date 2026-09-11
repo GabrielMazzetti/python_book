@@ -1,4 +1,119 @@
 # Análise Exploratória e Manipulação de Dados em *Python*
 
+---
 
+Chegamos no ponto-chave de qualquer análise de dados. Antes da modelagem, da inferência e da extração de resultados estatísticos, é a etapa exploratória que contextualiza o analista. Sem a compreensão prévia do cenário, qualquer procedimento será puramente matemático: exato em termos teóricos, porém vazio de informação aplicável ou interpretável. A função da Estatística é justamente atribuir significado aos dados, contando a sua história por meio de metodologias robustas e bem fundamentadas.
+
+Dessa maneira, é preciso compreender a essência das informações em mãos. É através da Análise Exploratória de Dados (AED) que esse processo ganha vida e, no ecossistema *Python*, ele é conduzido primordialmente com o suporte de bibliotecas especializadas na manipulação e visualização de estruturas tabulares^[Uma estrutura tabular refere-se à organização bidimensional dos dados em formato de tabela. Na terminologia estatística, equivale a uma matriz de dados, onde cada linha representa uma observação (ou registro) e cada coluna representa uma variável (ou atributo) de interesse.
+
+## A Biblioteca *Pandas* e as Estruturas de Dados
+
+Durante muito tempo, a manipulação de dados tabulares não era uma tarefa trivial em *Python*, sendo outras linguagens — como o *R* — preferidas para análises estatísticas. Para suprir a necessidade de ferramentas analíticas flexíveis e de alta performance, o pesquisador Wes McKinney iniciou, em 2008, o desenvolvimento da biblioteca `pandas`. Hoje, ela se consolidou como o padrão ouro da indústria para a limpeza, transformação e análise de dados em *Python* [@mckinney2022python]. O ecossistema do `pandas` é construído sobre duas estruturas de dados fundamentais: a `Series` e o `DataFrame`.
+
+Uma `Series` pode ser definida como um vetor unidimensional (semelhante a uma coluna de uma tabela) capaz de armazenar qualquer tipo de dado, acompanhada por um vetor de rótulos chamado de índice (*index*).
+
+Já o `DataFrame` — a estrutura principal da biblioteca — é um objeto bidimensional tabular. Para o estatístico, ele pode ser compreendido como a equivalência exata de um `data.frame` na linguagem *R* ou de uma planilha eletrônica estruturada. Matematicamente, um `DataFrame` é essencialmente um dicionário onde cada coluna é uma `Series` que compartilha o mesmo índice posicional [@mckinney2022python].
+
+Apesar da semelhança teórica com o *R*, a manipulação dessas estruturas apresenta peculiaridades sintáticas importantes. Enquanto no *R* a indexação se inicia em 1, a do `pandas` segue a regra do *Python* (baseada em zero), e a seleção explícita de dados é intermediada por métodos específicos da biblioteca, como os localizadores `.loc` (para rótulos) e `.iloc` (para posições inteiras). A partir dessa estrutura bidimensional, o analista ganha acesso imediato a métodos otimizados para a seleção de colunas, filtragem de linhas, criação de novas variáveis e tratamento de valores ausentes.
+
+## Importação e Tratamento de Dados (*Data Wrangling*)
+
+Antes que qualquer inferência estatística ou visualização seja possível, os dados brutos precisam ser carregados para a memória e rigorosamente limpos. Na comunidade analítica, esse processo de estruturação e higienização é frequentemente chamado de *Data Wrangling*.
+
+O primeiro passo é a importação dos dados. O `pandas` oferece diversas opções para a leitura de dados, sendo o método `pd.read_csv()` o mais trivial deles. Ao contrário das funções básicas de leitura em outras linguagens, o pandas possui um motor de inferência de tipos altamente otimizado, lidando de forma automática com a alocação de memória para variáveis numéricas, textuais ou séries temporais no momento da leitura [@vanderplas2016python].
+
+Uma vez importada a matriz de dados, é muito comum nos depararmos com células de valores ausentes (*missing values*). No *R*, estes valores são representados como `NA`, enquanto no *Python* eles são representados como `NaN`. Ambos representam a mesma coisa, mudando apenas a forma de apresentação. É evidente que o tratamento de valores ausentes é um tópico de muita discussão teórica na Estatística, já que alguns métodos, como o de preenchê-los com a média, por exemplo, podem nos levar a subestimar a variância em alguns casos, o que introduziria um viés na análise dos dados. Portanto, este tipo de tratamento deve sempre ser realizado com atenção considerando que ele não depende apenas da aplicação de funções computacionais.
+
+Neste contexto, dado que o analista fez, previamente, uma análise robusta que garanta a viabilidade de algum método de preenchimento de valores ausentes, o `pandas` oferece ótimas ferramentas práticas para a aplicação dos métodos: a função `dropna()` permite a exclusão direta das observações ou variáveis incompletas, enquanto a `fillna()` viabiliza técnicas de imputação, como o preenchimento de falhas utilizando a média, a mediana ou o último valor válido observado da respectiva série.
+
+Outro pilar crítico do Data Wrangling é o cruzamento de bases relacionais. Projetos reais raramente dependem de um único arquivo isolado; é frequente a necessidade de unir tabelas distintas por meio de variáveis-chave, utilizando a função `pd.merge()`. Nesta fase, a integridade lógica da base final deve ser a prioridade. Como regra fundamental de validação de dados em junções, caso ocorram discrepâncias ou identificadores duplicados ao combinar duas bases, os valores oriundos da primeira tabela (considerada a base primária ou de maior confiabilidade) devem sempre prevalecer. No *Python*, esse controle lógico rigoroso é facilitado pela arquitetura de *joins* do `pandas` e por métodos de alinhamento de índices, garantindo que o tratamento de duplicidades ou conflitos não comprometa a informação original mais segura.
+
+## Visualização dos Dados
+
+A qualidade de visualização dos dados é essencial na Estatística. É através dos recursos gráficos que podemos identificar tendências, anomalias e até mesmo distribuições. A visualização constitui a fase inicial de qualquer análise descritiva dos dados, mas não se limita a apenas isso. É comum, por exemplo, utilizar o QQ-plot para avaliar a normalidade dos resíduos de um modelo, de forma a dar suporte aos testes não-paramétricos que podem levar o analista à conclusões equivocadas em alguns casos, se utilizados de forma isolada. É justamente por este motivo que a utilização de mais de um recurso é sempre recomendada para testar pressuposições teóricas importantes.
+
+No âmbito visual, o *Python* conta com bibliotecas muito poderosas. São elas, principalmente, o `matplotlib` e o `Seaborn`. O `matplotlib` atua como o motor estrutural da linguagem. Ele é responsável por instanciar e desenhar os elementos fundamentais da interface gráfica, como a figura (a "tela" em branco), os eixos cartesianos, as marcações e as escalas [@hunter2007matplotlib]. Por ser uma ferramenta de baixo nível (termo que, na computação, refere-se à menor distância conceitual entre o código e a máquina, indicando a necessidade de especificar instruções mais minuciosas, e não uma avaliação sobre a qualidade da ferramenta) e extremamente detalhista, ele exige uma quantidade considerável de código para gerar representações esteticamente polidas, assemelhando-se aos pacotes base de gráficos do R (como a função `plot()`).  
+
+Para suprir a necessidade de gráficos estatísticos mais expressivos e com menos linhas de código, surgiu o `seaborn`. Construída nativamente sobre o `matplotlib`, essa biblioteca funciona como uma interface declarativa de alto nível, sendo perfeitamente integrada aos objetos da biblioteca `pandas` [@waskom2021seaborn].
+
+O grande diferencial do `seaborn` para o analista de dados é a abstração de complexidades estruturais somada à automatização de agregações estatísticas. Em muitas de suas funções, a biblioteca calcula e exibe intervalos de confiança de forma automática ao agregar dados. Além disso, o `seaborn` traz paletas de cores nativas fundamentadas na teoria da percepção visual, garantindo que as distinções categóricas e as intensidades contínuas sejam compreendidas de maneira intuitiva e sem vieses de leitura.
+
+## Estudos de Caso Práticos
+
+Para consolidar os conceitos de *Data Wrangling* e visualização, aplicaremos as ferramentas do pandas e do `seaborn` em dois conjuntos de dados clássicos na literatura estatística e no aprendizado de máquina: a base `Titanic` (focada em dados categóricos e taxas de sobrevivência) e a base `Iris` (focada em dados contínuos e distribuições dimensionais).
+
+Para facilitar a reprodutibilidade dos códigos a seguir, utilizaremos as versões dessas bases que já vêm nativamente embutidas na biblioteca `seaborn`.
+
+### Análise de Dados Categóricos: *Titanic*
+
+O conjunto de dados do naufrágio do `Titanic` é ideal para a exploração de tabelas de contingência e distribuições de frequência. No *Python*, a função `pd.crosstab()` do pandas atua de forma muito semelhante à clássica função `table()` do *R*, permitindo o cruzamento rápido entre variáveis qualitativas.
+
+No script abaixo, importamos as bibliotecas necessárias, carregamos os dados, removemos rapidamente os valores ausentes de uma coluna de interesse estrutural e geramos a tabela de contingência cruzando a classe do passageiro com o status de sobrevivência. Em seguida, utilizamos o seaborn para criar um gráfico de barras.
+
+```{python}
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Carregando a base de dados
+titanic = sns.load_dataset('titanic')
+
+# Tratamento rápido (Data Wrangling): Removendo linhas sem informação de embarque
+titanic_limpo = titanic.dropna(subset=['embark_town'])
+
+# Tabela de contingência (Classe vs Sobrevivência)
+tabela_sobrevivencia = pd.crosstab(
+    titanic_limpo['class'], 
+    titanic_limpo['survived'], 
+    rownames=['Classe'], 
+    colnames=['Sobreviveu?']
+)
+print("Tabela de Contingência - Titanic:\n")
+print(tabela_sobrevivencia)
+
+# Configurando e gerando o gráfico com Seaborn
+plt.figure(figsize=(8, 5))
+sns.countplot(
+    data=titanic_limpo, 
+    x='class', 
+    hue='survived', 
+    palette='Set2'
+)
+plt.title("Sobrevivência por Classe de Passageiro")
+plt.xlabel("Classe")
+plt.ylabel("Contagem")
+plt.show()
+```
+
+### Análise de Dados Contínuos: *Iris*
+
+A base `Iris`, introduzida pelo estatístico *Ronald Fisher* em 1936, é o exemplo definitivo para o estudo de distribuições contínuas e análise de correlação entre múltiplas variáveis numéricas (como comprimento e largura de pétalas e sépalas).
+
+Antes de partirmos para a visualização, a extração de métricas de posição e dispersão é o passo primário para a compreensão de variáveis contínuas. No *R*, essa tarefa é comumente realizada através da função `summary()`. No *Python*, a biblioteca `pandas` fornece o método `.describe()`, que calcula instantaneamente a contagem, a média, o desvio padrão e os quartis de todas as colunas numéricas do *DataFrame*.
+
+Enquanto as métricas descritivas resumem os dados, a exploração de dados contínuos exige uma abordagem visual para a identificação de padrões lineares ou de agrupamentos (*clusters*). O gráfico de dispersão (*scatterplot*) é a ferramenta analítica primária para esse fim. O `seaborn` permite estratificar esses pontos facilmente através do parâmetro `hue`, colorindo as observações com base em uma variável categórica, como a espécie da flor.
+
+```{python}
+# Carregando a base de dados
+iris = sns.load_dataset('iris')
+
+# Extração das métricas descritivas (equivalente ao summary do R)
+print("Resumo Estatístico da Base Iris:\n")
+print(iris.describe())
+
+# Configurando e gerando o gráfico de dispersão com Seaborn
+plt.figure(figsize=(8, 5))
+sns.scatterplot(
+    data=iris, 
+    x='petal_length', 
+    y='petal_width', 
+    hue='species', 
+    palette='deep',
+    s=80 # Tamanho dos pontos
+)
+plt.title("Relação entre Comprimento e Largura da Pétala")
+plt.xlabel("Comprimento da Pétala (cm)")
+plt.ylabel("Largura da Pétala (cm)")
+plt.show()
+```
 

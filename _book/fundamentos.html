@@ -85,7 +85,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./referencias.html" rel="next">
+<link href="./analise_exploratoria.html" rel="next">
 <link href="./config_amb.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -387,8 +387,14 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./analise_exploratoria.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Análise Exploratória e Manipulação de Dados em <em>Python</em></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./referencias.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Referências</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Referências</span></span></a>
   </div>
 </li>
     </ul>
@@ -437,7 +443,7 @@ window.Quarto = {
 <section id="filosofia-sintaxe-e-tipagem-da-linguagem" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="filosofia-sintaxe-e-tipagem-da-linguagem"><span class="header-section-number">3.1</span> Filosofia, Sintaxe e Tipagem da Linguagem</h2>
 <p>Grande parte das linguagens de programação surgem (ou evoluem) focadas em otimização de performance para a máquina. Porém, esse não é o caso do <em>Python</em>, que foi concebido a partir de uma filosofia muito bem fundamentada e orientada ao desenvolvedor. O princípio norteador da linguagem é o de que um código é lido muito mais vezes do que ele é escrito. Portanto, a clareza e a legibilidade devem ser prioridades absolutas.</p>
-<p>Essa filosofia está muito bem documentada no Zen do <em>Python</em> (PEP 20), um conjunto de princípios que guiam as melhores práticas na linguagem, destacando máximas como “o simples é melhor que o complexo” e “a legibilidade conta” <span class="citation" data-cites="peters2004pep20">(<a href="referencias.html#ref-peters2004pep20" role="doc-biblioref">Peters, 2004</a>)</span>.</p>
+<p>Essa filosofia está muito bem documentada no Zen do <em>Python</em> (<code>PEP 20</code>), um conjunto de princípios que guiam as melhores práticas na linguagem, destacando máximas como “o simples é melhor que o complexo” e “a legibilidade conta” <span class="citation" data-cites="peters2004pep20">(<a href="referencias.html#ref-peters2004pep20" role="doc-biblioref">Peters, 2004</a>)</span>.</p>
 <p>Para garantir essa legibilidade de forma estrutural, a sintaxe do <em>Python</em> elimina o uso de marcadores visuais excessivos, como as chaves <code>{}</code> ou as expressões <code>begin/end</code> para delimitar blocos de código. Em seu lugar, a linguagem adota a indentação obrigatória. O recuo da margem esquerda não é meramente uma questão de estilo, mas uma regra sintática rígida documentada na <code>PEP 8</code> <span class="citation" data-cites="vanrossum2001pep8">(<a href="referencias.html#ref-vanrossum2001pep8" role="doc-biblioref">Van Rossum; Warsaw; Coghlan, 2001</a>)</span>. Seu objetivo é forçar o programador a organizar, hierarquicamente, as operações, resultando em um código mais limpo.</p>
 <p>Além da sintaxe visual, o <em>Python</em> caracteriza-se por uma tipagem dinâmica e forte. Dinâmica porque não exige a declaração prévia do tipo da variável - a própria linguagem infere se o dado é numérico ou textual no momento da atribuição, além de permitir mudanças de valor e de tipo durante o processo de desenvolvimento. Forte porque, uma vez inferido o tipo, o <em>Python</em> não realiza conversões implícitas que possam gerar comportamentos inesperados, garantindo a segurança e a consistência das operações.</p>
 </section>
@@ -465,7 +471,7 @@ window.Quarto = {
 <h2 data-number="3.5" class="anchored" data-anchor-id="aplicação-prática-manipulação-de-listas"><span class="header-section-number">3.5</span> Aplicação Prática: Manipulação de Listas</h2>
 <p>No script a seguir, consolidamos todos os fundamentos apresentados neste capítulo. O exemplo ilustra desde a manipulação direta de uma lista utilizando métodos nativos (como o <code>append()</code> e o <code>pop()</code>), até o uso avançado das funções <code>map()</code> e <code>filter()</code> associadas a funções anônimas (<code>lambda</code>). Por fim, demonstramos a aplicação de uma função customizada, desenvolvida com <code>def()</code>, para o cálculo de uma média simples.</p>
 <p>Nota-se, também, o uso das chamadas <em>f-strings</em> (<code>f"texto {variável}"</code>) dentro da função <code>print()</code>. Esse é o método mais moderno e recomendado no <em>Python</em> para interpretar textos e variáveis na mesma linha, gerando saídas de telas mais limpas.</p>
-<div id="8b027ad9" class="cell" data-execution_count="1">
+<div id="55e09e7d" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ---- Definição de uma função customizada ----</span></span>
@@ -962,8 +968,8 @@ VAN ROSSUM, Guido; WARSAW, Barry; COGHLAN, Nick. <strong>PEP 8: Style Guide for 
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./referencias.html" class="pagination-link" aria-label="Referências">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Referências</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./analise_exploratoria.html" class="pagination-link" aria-label="Análise Exploratória e Manipulação de Dados em *Python*">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Análise Exploratória e Manipulação de Dados em <em>Python</em></span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
