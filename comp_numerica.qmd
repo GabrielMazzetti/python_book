@@ -166,7 +166,7 @@ print(f"Geradas {simulacoes} médias amostrais. Gerando gráfico de densidade...
 
 # Plotando o resultado para evidenciar a convergência assintótica
 plt.figure(figsize=(8, 5))
-sns.histplot(medias_amostrais, kde=True, stat="density", color="darkcyan", bins=60)
+sns.histplot(medias_amostrais, kde=True, stat="density", color="tomato", bins=60)
 plt.title(f"Teorema Central do Limite (Tamanho da Amostra n = {n_clt})", fontsize=14)
 plt.xlabel("Médias Amostrais (Distribuição Original: Exponencial)")
 plt.ylabel("Densidade")
