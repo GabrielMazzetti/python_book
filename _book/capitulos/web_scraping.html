@@ -472,7 +472,7 @@ div.csl-indent {
 <p>Além da busca genérica pelo nome da <em>tag</em> (como procurar por todos os parágrafos <code>&lt;p&gt;</code>), podemos afunilar a filtragem através dos atributos da <em>tag</em>, especialmente as classes, utilizando o parâmetro <code>class_</code> (com um <em>underline</em> no final, para não conflitar com a palavra reservada do <em>Python</em>). Caso o analista possua familiaridade com desenvolvimento <em>web</em> (um dos grandes diferenciais que um analista pode ter no contexto da raspagem de dados), o método <code>select()</code> permite o uso de seletores <em>CSS</em> diretos, oferecendo uma sintaxe ainda mais concisa e aumentando as possibilidades de caminhos para as buscas.</p>
 <p>Uma vez que o elemento correto é isolado, a extração da informação útil exige a separação entre o dado e o código <em>HTML</em>. O texto visível aos usuários pode ser extraído acessando a propriedade <code>.text</code> do objeto. Já quando o objetivo é coletar <em>links</em> ou caminhos de arquivos, a informação desejada não se encontra no texto livre, mas embutida dentro da própria <em>tag</em> (no atributo <code>href</code>), sendo necessário extraí-la utilizando o método <code>.get('href')</code>.</p>
 <p>O <em>script</em> a seguir ilustra a aplicação prática desses conceitos utilizando um documento <em>HTML</em> simulado. Essa abordagem garante a reprodutibilidade metodológica do exemplo, eliminando a dependência de conexão com servidores externos.</p>
-<div id="d41b6344" class="cell" data-execution_count="1">
+<div id="42950778" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bs4 <span class="im">import</span> BeautifulSoup</span>
@@ -524,7 +524,7 @@ Arquivos Disponíveis para Download:
 <p>Neste contexto, destaca-se a função <code>pd.read_html()</code>, que automatiza o processo como um todo: ao receber um trecho de código <em>HTML</em>, ela localiza internamente todas as <em>tags</em> <code>&lt;table&gt;</code> presentes, interpreta suas linhas (<code>&lt;td&gt;</code>), e devolve uma lista de <code>DataFrames</code> prontos para uso - um para cada tabela encontrada no documento <span class="citation" data-cites="mckinney2022python">(<a href="referencias.html#ref-mckinney2022python" role="doc-biblioref">McKinney, 2022</a>)</span>.</p>
 <p>É importante destacarque, por razões de segurança, em versões mais recentes do <code>pandas</code>a função não aceita mais <em>strings</em> de <em>HTML</em> diretamente, exigindo que o texto seja envolvido pela classe <code>StringIO</code> do módulo <code>io</code>, nativo do <em>Python</em>, simulando um arquivo em memória.Esse mesmo mecanismo se aplica quando o <em>HTML</em> já foi previamente capturado por uma requisição <code>requests</code>, sendo a prática recomendada em qualquer cenário de raspagem real.</p>
 <p>O script a seguir demonstra esse fluxo completo, partindo de uma tabela HTML simulada até a obtenção de um DataFrame estruturado, pronto para as etapas de tratamento e análise discutidas no Capítulo 4.</p>
-<div id="3842b178" class="cell" data-execution_count="2">
+<div id="6c9bfc50" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -579,7 +579,7 @@ Arquivos Disponíveis para Download:
 <section id="configuração-do-webdriver" class="level3" data-number="6.5.1">
 <h3 data-number="6.5.1" class="anchored" data-anchor-id="configuração-do-webdriver"><span class="header-section-number">6.5.1</span> Configuração do Webdriver</h3>
 <p>O <code>Selenium</code> opera controlando um <em>webdriver</em>: um executável que atua como intermediário entre o código Python e um navegador instalado na máquina (como o Google Chrome). Em versões mais antigas da biblioteca, era necessário baixar manualmente o executável correspondente à versão exata do navegador instalado — um processo frágil e propenso a quebras a cada atualização. Desde a versão 4.6, o <code>Selenium</code> incorpora o <em>Selenium Manager</em> <span class="citation" data-cites="selenium2026docs">(<a href="referencias.html#ref-selenium2026docs" role="doc-biblioref">Selenium Project, 2026</a>)</span>, um mecanismo interno que detecta automaticamente a versão do navegador instalado e baixa o <em>driver</em> compatível, dispensando essa configuração manual.</p>
-<div id="7a49f2a0" class="cell" data-execution_count="3">
+<div id="347cfd6a" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> selenium <span class="im">import</span> webdriver</span>
@@ -603,7 +603,7 @@ Arquivos Disponíveis para Download:
 <section id="interação-com-a-página" class="level3" data-number="6.5.2">
 <h3 data-number="6.5.2" class="anchored" data-anchor-id="interação-com-a-página"><span class="header-section-number">6.5.2</span> Interação com a Página</h3>
 <p>Diferentemente do <code>BeautifulSoup</code>, que apenas lê uma “fotografia” estática do <em>HTML</em>, o <code>Selenium</code> permite simular ações humanas dentro do navegador controlado. Os métodos mais utilizados para localizar elementos são agrupados na classe <code>By</code>, que oferece estratégias de busca (por <code>ID</code>, por <code>CSS_SELECTOR</code>, por <code>XPATH</code>, entre outras). Uma vez localizado, o elemento pode ser manipulado através de métodos como <code>.click()</code>, para simular um clique, e <code>.send_keys()</code>, para preencher campos de formulário.</p>
-<div id="38feff0d" class="cell" data-execution_count="4">
+<div id="df4e428e" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> selenium.webdriver.common.by <span class="im">import</span> By</span>
@@ -622,7 +622,7 @@ Arquivos Disponíveis para Download:
 <h3 data-number="6.5.3" class="anchored" data-anchor-id="espera-explícita-e-implícita"><span class="header-section-number">6.5.3</span> Espera Explícita e Implícita</h3>
 <p>Talvez o desafio mais característico da raspagem dinâmica seja o problema da sincronização: o código <em>Python</em> é executado em milissegundos, mas o carregamento de conteúdo via JavaScript pode levar segundos, dependendo da conexão e do servidor. Tentar extrair um elemento antes que ele tenha sido efetivamente renderizado resulta no erro <code>NoSuchElementException</code>.</p>
 <p>Para lidar com essa assincronia, o Selenium oferece dois mecanismos de espera. A espera implícita, configurada uma única vez com <code>navegador.implicitly_wait(segundos)</code>, instrui o driver a aguardar automaticamente, por um tempo máximo definido, antes de lançar um erro em qualquer tentativa de busca de elemento. Já a espera explícita, através da classe <code>WebDriverWait</code>, é uma abordagem mais precisa e recomendada em cenários de produção: ela permite pausar a execução até que uma condição específica seja satisfeita (como a presença ou a clicabilidade de um elemento), evitando tanto erros prematuros quanto esperas desnecessariamente longas.</p>
-<div id="b967cfda" class="cell" data-execution_count="5">
+<div id="dd961f5e" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> selenium.webdriver.support.ui <span class="im">import</span> WebDriverWait</span>
@@ -645,7 +645,7 @@ Arquivos Disponíveis para Download:
 <h3 data-number="6.6.1" class="anchored" data-anchor-id="caso-1-estático-extraindo-uma-tabela-real-com-requests-e-beautifulsoup"><span class="header-section-number">6.6.1</span> Caso 1 (Estático): Extraindo uma Tabela Real com Requests e BeautifulSoup</h3>
 <p>Diferentemente do exemplo controlado da seção 6.3, este estudo de caso aplica o fluxo completo sobre uma página real da internet, respeitando as boas práticas discutidas na seção 6.1: identificação via <code>User-Agent</code> e verificação do código de status antes de prosseguir com o processamento.</p>
 <p>Note que, ao contrário da função <code>pd.read_html()</code> apresentada na seção 6.4 (que automatiza toda a extração de uma tabela HTML), este exemplo demonstra o processo manual de construção de um <code>DataFrame</code> a partir dos elementos <code>find_all()</code>. Essa abordagem é necessária quando a estrutura da tabela é irregular demais para a inferência automática do pandas, ou quando se deseja um controle mais granular sobre a limpeza de cada célula durante a própria extração.</p>
-<div id="bea584c3" class="cell" data-execution_count="6">
+<div id="57de5b6e" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
@@ -695,7 +695,7 @@ Arquivos Disponíveis para Download:
 <h3 data-number="6.6.2" class="anchored" data-anchor-id="caso-2-dinâmico-automatizando-a-coleta-com-selenium"><span class="header-section-number">6.6.2</span> Caso 2 (Dinâmico): Automatizando a Coleta com Selenium</h3>
 <p>Para o estudo de caso dinâmico, utilizamos um ambiente construído especificamente para fins didáticos de raspagem de dados — o site <em>Quotes to Scrape</em> (em sua versão de rolagem infinita), que carrega novas citações via <em>JavaScript</em> à medida que o usuário rola a página para baixo. Por ser um ambiente público criado justamente para práticas de scraping, seu uso é livre de questões éticas ou de sobrecarga indevida de servidores de terceiros.</p>
 <p>O <em>script</em> abaixo simula a rolagem da página, aguarda o carregamento do conteúdo dinâmico e extrai o texto de cada citação junto ao seu respectivo autor.</p>
-<div id="73902590" class="cell" data-execution_count="7">
+<div id="623f98ce" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> selenium <span class="im">import</span> webdriver</span>
