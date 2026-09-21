@@ -20,6 +20,7 @@ Todo documento Quarto é dividido fundamentalmente em três partes: o cabeçalho
 
 Quando trabalhamos com projetos escaláveis ou livros com múltiplos capítulos, é imperativo garantir uma identidade visual coesa e um rastreamento interno eficiente. Para isso, configuramos referências customizadas. O exemplo abaixo demonstra um cabeçalho *YAML* profissional, pronto para produção, que aplica a configuração de estilo definida para os seus projetos (que chamaremos de "Meu template") e estabelece o identificador interno exigido (que será "m_template"):
 
+```{markdown}
 ---
 title: "Capítulo 7: Estruturação de Relatórios"
 author: "Nome"
@@ -36,6 +37,7 @@ execute:
   warning: false
   message: false
 ---
+```
 
 Vamos entender as chaves deste cabeçalho:
 

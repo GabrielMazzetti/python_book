@@ -238,8 +238,8 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
 \hypersetup{
-  pdftitle={Capítulo 7: Estruturação de Relatórios},
-  pdfauthor={Nome},
+  pdftitle={Python, Web Scraping e Livros Digitais: Uma Introdução},
+  pdfauthor={Gabriel Sanábio Mazzetti Affonso},
   pdflang={pt-BR},
   colorlinks=true,
   linkcolor={blue},
@@ -249,7 +249,7 @@
   pdfcreator={LaTeX via pandoc}}
 
 
-\title{Capítulo 7: Estruturação de Relatórios}
+\title{Python, Web Scraping e Livros Digitais: Uma Introdução}
 \author{Gabriel Sanábio Mazzetti Affonso}
 \date{2026-09-21}
 \begin{document}
@@ -961,7 +961,7 @@ Third        372  119
 \end{verbatim}
 
 \begin{verbatim}
-C:\Users\gabri\AppData\Local\Temp\ipykernel_13392\2615282862.py:23: UserWarning: The palette list has more values (3) than needed (2), which may not be intended.
+C:\Users\gabri\AppData\Local\Temp\ipykernel_27636\2615282862.py:23: UserWarning: The palette list has more values (3) than needed (2), which may not be intended.
   sns.countplot(
 \end{verbatim}
 
@@ -2025,6 +2025,27 @@ customizadas. O exemplo abaixo demonstra um cabeçalho \emph{YAML}
 profissional, pronto para produção, que aplica a configuração de estilo
 definida para os seus projetos (que chamaremos de ``Meu template'') e
 estabelece o identificador interno exigido (que será ``m\_template''):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{{-}{-}{-}}
+\NormalTok{title: "Capítulo 7: Estruturação de Relatórios"}
+\NormalTok{author: "Nome"}
+\NormalTok{format:}
+\NormalTok{  html:}
+\NormalTok{    theme: cosmo}
+\NormalTok{    template: "Meu template"}
+\NormalTok{    toc: true}
+\NormalTok{    toc{-}title: "Neste Capítulo"}
+\NormalTok{project:}
+\NormalTok{  id: "m\_template"}
+\NormalTok{execute:}
+\NormalTok{  echo: true}
+\NormalTok{  warning: false}
+\NormalTok{  message: false}
+\NormalTok{{-}{-}{-}}
+\end{Highlighting}
+\end{Shaded}
 
 Vamos entender as chaves deste cabeçalho:
 
