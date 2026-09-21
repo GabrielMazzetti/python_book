@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Gabriel Sanábio Mazzetti Affonso">
 
-<title>Python, Web Scraping e Livros Digitais: Uma Introdução</title>
+<title>2&nbsp; Configurando o Ambiente de Trabalho – Python, Web Scraping e Livros Digitais: Uma Introdução</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,31 +20,67 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./capitulos/introducao.html" rel="next">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-364982630eef5352dd1537128a8ed5cb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-b9e11ad5a37ead2aabff839d95ae3857.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-364982630eef5352dd1537128a8ed5cb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../capitulos/fundamentos.html" rel="next">
+<link href="../capitulos/introducao.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-364982630eef5352dd1537128a8ed5cb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-b9e11ad5a37ead2aabff839d95ae3857.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-364982630eef5352dd1537128a8ed5cb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -248,7 +283,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Prefácio</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../capitulos/config_amb.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Configurando o Ambiente de Trabalho</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Procurar" onclick="window.quartoOpenSearch();">
@@ -263,7 +298,7 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Python, Web Scraping e Livros Digitais: Uma Introdução</a> 
+      <a href="../">Python, Web Scraping e Livros Digitais: Uma Introdução</a> 
         <div class="sidebar-tools-main">
     <a href="https://github.com/GabrielMazzetti/python_book" title="Código fonte" class="quarto-navigation-tool px-1" aria-label="Código fonte"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo escuro"><i class="bi"></i></a>
@@ -279,55 +314,55 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Prefácio</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./capitulos/introducao.html" class="sidebar-item-text sidebar-link">
+  <a href="../capitulos/introducao.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./capitulos/config_amb.html" class="sidebar-item-text sidebar-link">
+  <a href="../capitulos/config_amb.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Configurando o Ambiente de Trabalho</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./capitulos/fundamentos.html" class="sidebar-item-text sidebar-link">
+  <a href="../capitulos/fundamentos.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Fundamentos</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./capitulos/analise_exploratoria.html" class="sidebar-item-text sidebar-link">
+  <a href="../capitulos/analise_exploratoria.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Análise Exploratória e Manipulação de Dados em <em>Python</em></span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./capitulos/comp_numerica.html" class="sidebar-item-text sidebar-link">
+  <a href="../capitulos/comp_numerica.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Computação Numérica com NumPy</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./capitulos/web_scraping.html" class="sidebar-item-text sidebar-link">
+  <a href="../capitulos/web_scraping.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Web Scraping</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./capitulos/livros.html" class="sidebar-item-text sidebar-link">
+  <a href="../capitulos/livros.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Livros Digitais: Estruturação de relatórios dinâmicos via <em>Quarto</em></span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./capitulos/referencias.html" class="sidebar-item-text sidebar-link">
+  <a href="../capitulos/referencias.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Referências</span></span></a>
   </div>
 </li>
@@ -341,7 +376,9 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Índice</h2>
    
   <ul>
-  <li><a href="#prefácio" id="toc-prefácio" class="nav-link active" data-scroll-target="#prefácio">Prefácio</a></li>
+  <li><a href="#o-ambiente-python-e-o-pacote-reticulate" id="toc-o-ambiente-python-e-o-pacote-reticulate" class="nav-link active" data-scroll-target="#o-ambiente-python-e-o-pacote-reticulate"><span class="header-section-number">2.1</span> O Ambiente <em>Python</em> e o pacote <em>reticulate</em></a></li>
+  <li><a href="#gerenciamento-de-bibliotecas-com-o-pip" id="toc-gerenciamento-de-bibliotecas-com-o-pip" class="nav-link" data-scroll-target="#gerenciamento-de-bibliotecas-com-o-pip"><span class="header-section-number">2.2</span> Gerenciamento de Bibliotecas com o <em>pip</em></a></li>
+  <li><a href="#instalação-direta-em-blocos-de-código" id="toc-instalação-direta-em-blocos-de-código" class="nav-link" data-scroll-target="#instalação-direta-em-blocos-de-código"><span class="header-section-number">2.3</span> Instalação Direta em Blocos de Código</a></li>
   </ul>
 </nav>
     </div>
@@ -351,26 +388,14 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Python, Web Scraping e Livros Digitais: Uma Introdução</h1>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Configurando o Ambiente de Trabalho</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Autor</div>
-    <div class="quarto-title-meta-contents">
-             <p>Gabriel Sanábio Mazzetti Affonso </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Data de Publicação</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">21 de setembro de 2026</p>
-    </div>
-  </div>
   
     
   </div>
@@ -380,13 +405,25 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="prefácio" class="level1 unnumbered">
-<h1 class="unnumbered">Prefácio</h1>
-<p>O presente material consiste na consolidação dos resultados de pesquisa obtidos durante o período de Iniciação Científica, no contexto do projeto <strong>Métodos de Aprendizado Estatístico para Discriminação e Classificação: Aplicações à Indústria 4.0 – Fase 3</strong>. Este documento visa não só o detalhamento dos métodos de coleta de dados via <em>Web Scraping</em>, mas também a viabilidade do uso do <em>Python</em> para tal, além de destacar as especificidades da linguagem e suas vantagens para o aprendizado de métodos estatísticos e computacionais.</p>
-<p>Neste contexto, vale ressaltar que o material é de cunho introdutório, buscando viabilizar o aprendizado do <em>Python</em> enquanto linguagem de programação e do <em>Web Scraping</em> como técnica poderosa de coleta de dados. Dessa forma, seu foco é desenvolver, no estatístico, o interesse pelos diversos recursos computacionais que podem auxiliá-los enquanto profissionais e estudiosos da área..</p>
-<p>A motivação para o desenvolvimento deste material surgiu da necessidade de diversificar as ferramentas de aplicação computacional existentes para analisar dados. A interseção entre a teoria estatística e a aplicação dos métodos se sustenta no casamento entre o rigor matemático e a modernidade computacional. Qualquer das partes que for negligenciada ocasionará problemas ou limitações importantes.</p>
-<p>Ademais, é válido ressaltar a seção extra presente no material, desenvolvida com o intuito de explicar a estrutura dos livros digitais, como esse, usando o <em>Quarto</em>. Ainda que muitos considerem adequado o uso do <em>Bookdown</em> para este tipo de trabalho (o que é totalmente válido, dadas as especificidades do Rmarkdown), o <em>Quarto</em> se mostrou uma espécie de sucessor natural muito adequado, apresentando ferramentas modernas e extremamente úteis para detalhes de <em>layout</em>, especialmente tratando de documentos compilados em <em>HTML</em>.</p>
-<p>Por fim, deixo aqui minha gratidão à Universidade Federal de Juiz de Fora (UFJF) pelo ambiente acadêmico. Agradeço, especialmente, ao meu orientador, Professor Doutor Lupércio França Bessegato, pela oportunidade e pelo acompanhamento técnico que possibilitaram o desenvolvimento deste trabalho.</p>
+<p>Antes de iniciarmos a manipulação de dados e as análises, é fundamental garantir que o ambiente computacional esteja configurado corretamente. Para a maioria dos estudantes e profissionais de Estatística, o <em>RStudio</em> é o ambiente de desenvolvimento integrado (IDE) mais familiar. A boa notícia é que o <em>RStudio</em>, especialmente quando aliado ao <em>Quarto</em>, oferece um suporte excelente para a execução de códigos em <em>Python</em>.</p>
+<section id="o-ambiente-python-e-o-pacote-reticulate" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="o-ambiente-python-e-o-pacote-reticulate"><span class="header-section-number">2.1</span> O Ambiente <em>Python</em> e o pacote <em>reticulate</em></h2>
+<p>Em alguns casos, especialmente na primeira execução de um script <em>Python</em> dentro do <em>RStudio</em>, o ambiente pode não estar perfeitamente configurado. Isso ocorre porque o <em>RStudio</em> utiliza um pacote chamado <em>reticulate</em> para fazer a ponte e integrar o <em>Python</em> ao ecossistema do <em>R.</em></p>
+<p>O <em>reticulate</em> pode acabar criando, de forma automática, um ambiente virtual <em>Python</em> próprio, isolado daquele que você eventualmente já tenha instalado em seu sistema operacional. Por conta desse isolamento, esse novo ambiente nem sempre possui todas as bibliotecas necessárias para a análise de dados já pré-instaladas.</p>
+</section>
+<section id="gerenciamento-de-bibliotecas-com-o-pip" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="gerenciamento-de-bibliotecas-com-o-pip"><span class="header-section-number">2.2</span> Gerenciamento de Bibliotecas com o <em>pip</em></h2>
+<p>Caso apareçam mensagens de erro indicando que bibliotecas fundamentais como pandas, <em>jupyter</em> ou outras não foram encontradas, elas podem ser facilmente adicionadas utilizando o <em>pip.</em> O <em>pip</em> é o gerenciador de pacotes padrão do <em>Python</em>, responsável por baixar, instalar e atualizar bibliotecas externas.</p>
+<p>Para realizar a instalação via <strong>Terminal</strong> (aba <strong>Terminal</strong> no <em>RStudio</em>, e não no Console), basta executar os seguintes comandos:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> pip install pandas numpy seaborn matplotlib</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> pip install jupyter</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="instalação-direta-em-blocos-de-código" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="instalação-direta-em-blocos-de-código"><span class="header-section-number">2.3</span> Instalação Direta em Blocos de Código</h2>
+<p>Em documentos interativos (como notebooks <em>Jupyter</em> ou arquivos <em>.qmd</em> do <em>Quarto</em>), também é possível executar comandos de terminal diretamente de dentro das células de código (<em>code chunks</em>). Para isso, utiliza-se o caractere de exclamação (!) no início da linha.</p>
+<p>Por exemplo, o comando a seguir instala a biblioteca pandas diretamente a partir do ambiente de execução do documento, sem a necessidade de abrir o terminal do sistema:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">!python</span> <span class="at">-m</span> pip install pandas</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Dica importante</strong>: Caso o <em>RStudio</em> continue apresentando problemas ou pareça estar utilizando uma instalação do <em>Python</em> diferente da esperada, pode ser necessário reiniciar a sessão do <em>R</em> (<em>Session</em> &gt; <em>Restart R</em>) para que o reticulate reconheça as novas bibliotecas instaladas. Em geral, após essa configuração inicial e a instalação dos pacotes, o código passará a funcionar normalmente.</p>
 
 
 </section>
@@ -806,10 +843,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="../capitulos/introducao.html" class="pagination-link" aria-label="Introdução">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./capitulos/introducao.html" class="pagination-link" aria-label="Introdução">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../capitulos/fundamentos.html" class="pagination-link" aria-label="Fundamentos">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Fundamentos</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -1,0 +1,301 @@
+# Web Scraping
+
+---
+
+Até o momento, o fluxo analítico apresentado pressupôs que os dados já estivessem estruturados e acessíveis em formatos padronizados (como arquivos `CSV`). Contudo, no cenário contemporâneo da Ciência de Dados, a maior parte das informações geradas diariamente não se encontra tabularmente organizada, mas sim distribuída em milhões de páginas na internet. A técnica de acessar, processar e estruturar esses dados de forma automatizada é conhecida como Web Scraping (raspagem de dados).
+
+## Fundamentos da *Web* e Ética na Extração
+
+Para extrair informações da internet, é essencial compreender a arquitetura da *web*. Quando acessamos um site, nosso computador (o cliente) envia uma requisição, através do protocolo *HTTP* (*Hypertext Transfer Protocol*) para um computador remoto (o servidor). Na raspagem de dados, a requisição mais comum é o método `GET`, utilizado para solicitar a leitura de uma página [@mitchell2018web].
+
+Se a requisição for bem-sucedida, o servidor retorna um documento de texto escrito em *HTML* (*HyperText Markup Language*). O entendimento da estrutura dos códigos *HTML* sobre os quais as páginas da *web* são construídas é exatamente o que nos permite realizar o processo de raspagem de dados.
+
+O *HTML* não é uma linguagem de programação, mas uma linguagem de marcação, que organiza o conteúdo através de etiquetas (*tags*), como `<p>` para parágrafos, `<h1>` para títulos e `<table>` para tabelas. Esse documento é estruturado de forma hierárquica, formando uma árvore de elementos conhecida como *DOM*^[O *DOM* (*Document Object Model*) é uma interface de programação que representa o documento *HTML* como uma árvore lógica. Ele permite que linguagens de programação, como o *Python* ou o *JavaScript*, naveguem, acessem e modifiquem o conteúdo, a estrutura e o estilo da página *web*.]. É através dos atributos dessas tags (especialmente `class` e `id`) que os algoritmos de scraping conseguem localizar exatamente qual pedaço de texto ou número deve ser extraído.
+
+Dessa forma, as requisições são guiadas justamente por essas *tags* que servem como um "mapa" da *internet*. Elas nos permitem generalizar os códigos e buscar, teoricamente, de forma ilimitada pela web, uma vez que não precisamos conhecer exatamente os textos e seus caracteres para saber em que local da página buscar, necessitamos apenas saber qual o local mais provável de se encontrar um conteúdo dentro da estrutura *HTML*.
+
+### Ética e Boas Práticas na Raspagem
+
+A raspagem de dados apresenta desafios que vão muito além da capacidade computacional e da abrangência lógica do código. Um número muito alto de requisições pode sobrecarregar o servidor alvo, podendo até mesmo levá-lo a cair, o que configura um ataque de negação de serviço (DDoS) acidental. Para garantir uma conduta ética, o analista de dados deve respeitar três pilares fundamentais [@mitchell2018web]:
+
+* Inspeção do arquivo `robots.txt`: Antes de raspar um domínio, deve-se verificar este arquivo público, que contém as diretrizes do administrador sobre quais páginas podem ou não ser acessadas por robôs (acessível via (nome_do_site.com/robots.txt). Por exemplo, se quiser raspar dados da *Gov*, deve acessar [gov.br/robots.txt](https://www.gov.br/robots.txt).
+
+* Identificação do *User-Agent*: Por padrão, a biblioteca de requisições do Python se identifica como um robô genérico. É recomendável alterar o *User-Agent* no cabeçalho da requisição para um identificador real (como o de um navegador comum) e, em projetos acadêmicos ou comerciais, fornecer um contato válido para o administrador do servidor.
+
+* Implementação de *Delays*: O código deve incluir pausas intencionais (usando a função `time.sleep()`) entre as requisições, simulando a velocidade de leitura de um ser humano e preservando a largura de banda do servidor acessado.
+
+## O Ecossistema de Raspagem Estática
+
+Uma vez entendidas as questões éticas da raspagem de dados e estruturais da *web*, podemos partir para a operacionalização da coleta de dados. Primeiramente, veremos o caso das páginas cujo conteúdo *HTML* é entregue, em sua totalidade, logo na requisição inicial. Nesse caso, dizemos que a extração está sendo feita sobre páginas estáticas.
+
+O *Python* conta com duas bibliotecas clássicas para a raspagem estática: a `requests` e a `BeautifulSoup`. A biblioteca `requests` é responsável por gerenciar a comunicação *HTTP*, nos permitindo baixar os conteúdos de uma página através de comandos simples e diretos. Um aspecto crucial ao utilizar essa ferramenta é a validação do código de status da resposta (*status code*). Um código `200` indica que a requisição foi bem-sucedida, enquanto códigos na casa dos `400` (como o famoso `404 Not Found` ou `403 Forbidden`) sinalizam, respectivamente, que a página não existe ou que o servidor bloqueou o acesso, possivelmente identificando a automação [@mitchell2018web]. 
+
+Uma vez que o código *HTML* bruto é capturado com sucesso, ele é armazenado no computador apenas como uma longa e contínua cadeia de texto (*string*). Analisar dados diretamente desse formato seria extremamente comlplicado e suscetível a erros. É neste contexto que a biblioteca `BeautifulSoup` (importada do pacote `bs4`) se faz necessária.
+
+Ela atua como um "parseador" (*parser*), que analisa o texto bruto e o converte na árvore hierárquica do *DOM*, discutida na seção anterior. Ao transformar a *string* estática em um objeto estruturado e navegável, o `BeautifulSoup` disponibiliza métodos otimizados para que possamos buscar dados de forma cirúrgica, utilizando os nomes das *tags* e seus respectivos atributos.
+
+## Navegação e Extração de Elementos (Conteúdo Estático)
+
+Com a página da *web* "traduzida" através do `BeautifulSoup`, o conteúdo que antes era confuso agora é estruturado de maneira hierárquica e perfeitamente mapeada. Neste contexto, nosso desafio passa a ser a localização exata da informação desejada dentro dessa árvore de elementos (*tags*). 
+
+Para navegar por essa estrutura, a biblioteca fornece diversos métodos, sendo os mais proeminentes o `find()` e o `find_all()`. O método `find()` percorre o documento e retorna a primeira ocorrência de uma *tag* específica que satisfaça os critérios definidos. Já o `find_all()` varre toda a página e retorna uma coleção (uma lista estruturada) contendo todos os elementos que correspondam a busca.
+
+Além da busca genérica pelo nome da *tag* (como procurar por todos os parágrafos `<p>`), podemos afunilar a filtragem através dos atributos da *tag*, especialmente as classes, utilizando o parâmetro `class_` (com um *underline* no final, para não conflitar com a palavra reservada do *Python*). Caso o analista possua familiaridade com desenvolvimento *web* (um dos grandes diferenciais que um analista pode ter no contexto da raspagem de dados), o método `select()` permite o uso de seletores *CSS* diretos, oferecendo uma sintaxe ainda mais concisa e aumentando as possibilidades de caminhos para as buscas.
+
+Uma vez que o elemento correto é isolado, a extração da informação útil exige a separação entre o dado e o código *HTML*. O texto visível aos usuários pode ser extraído acessando a propriedade `.text` do objeto. Já quando o objetivo é coletar *links* ou caminhos de arquivos, a informação desejada não se encontra no texto livre, mas embutida dentro da própria *tag* (no atributo `href`), sendo necessário extraí-la utilizando o método `.get('href')`.
+
+O *script* a seguir ilustra a aplicação prática desses conceitos utilizando um documento *HTML* simulado. Essa abordagem garante a reprodutibilidade metodológica do exemplo, eliminando a dependência de conexão com servidores externos.
+
+```{python}
+from bs4 import BeautifulSoup
+
+# Simulando o HTML estático de uma página estruturada
+html_simulado = """
+<html>
+  <body>
+    <h1 class="titulo-principal">Estatísticas Demográficas</h1>
+    <p class="resumo">Este é um resumo dos dados do censo.</p>
+    <div id="dados-estatisticos">
+      <a href="https://exemplo.com/tabela_norte.csv" 
+      class="link-dados">Dados Região Norte</a>
+      <a href="https://exemplo.com/tabela_sul.csv" 
+      class="link-dados">Dados Região Sul</a>
+    </div>
+  </body>
+</html>
+"""
+
+# Instanciando o parser para criar a árvore DOM
+sopa = BeautifulSoup(html_simulado, 'html.parser')
+
+# Usando find() para extrair o texto de uma classe específica
+titulo = sopa.find('h1', class_='titulo-principal').text
+print(f"Título da Página: {titulo}\n")
+
+# Usando find_all() e iterando para extrair e formatar múltiplos links
+tags_link = sopa.find_all('a', class_='link-dados')
+
+print("Arquivos Disponíveis para Download:")
+for tag in tags_link:
+    texto_link = tag.text          # Extrai o texto visível
+    url = tag.get('href')          # Extrai o link oculto no atributo
+    print(f"- {texto_link}: {url}")
+```
+
+## Raspagem de Estruturas Tabulares (Integração com `Pandas`)
+
+Embora os métodos `find()` e `find_all()` do `BeautifulSoup` sejam suficientes para extrair qualquer elemento isolado de uma página, extrair uma estrutura tabular completa (a *tag* `<table>`) elemento por elemento seria um processo redundante e propenso a erros. Para isso, o *Python* oferece uma ponte direta o *HTML* tabular e a estrutura de um `DataFrame`, através da biblioteca `pandas`, da qual já falamos anteriormente.
+
+Neste contexto, destaca-se a função `pd.read_html()`, que automatiza o processo como um todo: ao receber um trecho de código *HTML*, ela localiza internamente todas as *tags* `<table>` presentes, interpreta suas linhas (`<td>`), e devolve uma lista de `DataFrames` prontos para uso - um para cada tabela encontrada no documento [@mckinney2022python].
+
+É importante destacarque, por razões de segurança, em versões mais recentes do `pandas`a função não aceita mais *strings* de *HTML* diretamente, exigindo que o texto seja envolvido pela classe `StringIO` do módulo `io`, nativo do *Python*, simulando um arquivo em memória.Esse mesmo mecanismo se aplica quando o *HTML* já foi previamente capturado por uma requisição `requests`, sendo a prática recomendada em qualquer cenário de raspagem real.
+
+O script a seguir demonstra esse fluxo completo, partindo de uma tabela HTML simulada até a obtenção de um DataFrame estruturado, pronto para as etapas de tratamento e análise discutidas no Capítulo 4.
+
+```{python}
+import pandas as pd
+from io import StringIO
+
+# Simulando uma tabela HTML, como a que poderia ser retornada por uma requisição
+html_tabela = """
+<table>
+  <caption>Indicadores Regionais</caption>
+  <tr>
+    <th>Região</th>
+    <th>População</th>
+    <th>PIB (em bilhões)</th>
+  </tr>
+  <tr>
+    <td>Norte</td>
+    <td>18000000</td>
+    <td>250</td>
+  </tr>
+  <tr>
+    <td>Sul</td>
+    <td>30000000</td>
+    <td>800</td>
+  </tr>
+</table>
+"""
+
+# read_html() exige que a string seja envolvida por StringIO
+tabelas_encontradas = pd.read_html(StringIO(html_tabela))
+
+# A função retorna uma lista de DataFrames (uma por tabela na página)
+df_indicadores = tabelas_encontradas[0]
+
+print(f"Número de tabelas encontradas: {len(tabelas_encontradas)}\n")
+print(df_indicadores)
+```
+
+Como resultado, obtemos diretamente um `DataFrame` com tipagem já inferida (valores numéricos reconhecidos como tais), eliminando por completo a necessidade de laços de repetição manuais para percorrer células — o "pulo do gato" analítico mencionado anteriormente. A partir deste ponto, o 'df_indicadores' já pode ser submetido a qualquer uma das ferramentas de *Data Wrangling* apresentadas no Capítulo 4, como `.describe()`, `dropna()` ou `merge()` com outras bases.
+
+Vale ressaltar que essa abordagem tem uma limitação natural: ela funciona apenas quando a informação já está de fato estruturada em uma *tag* `<table>` no *HTML.* Muitas páginas modernas simulam visualmente uma tabela usando `<div>s` estilizados via *CSS*, caso em que a extração exige o uso combinado de `find_all()` — técnica que retomaremos no estudo de caso da seção 6.6. 
+
+## Raspagem Dinâmica e Automação com Selenium
+
+As técnicas apresentadas nas seções anteriores partem de uma premissa importante: o conteúdo relevante já está presente no HTML devolvido pela requisição inicial. Essa premissa, no entanto, não se sustenta para uma parcela crescente da web moderna. Em muitas aplicações, o `requests` retorna apenas um esqueleto HTML praticamente vazio, enquanto o conteúdo real (tabelas, listas, resultados de busca) é inserido dinamicamente na página por código *JavaScript*, executado somente depois que um navegador carrega e interpreta a página por completo.
+
+Como o `BeautifulSoup` não executa *JavaScript* — ele apenas interpreta o texto estático que recebe —, essas páginas exigem uma abordagem estrutural diferente: em vez de simular uma requisição, é necessário automatizar um navegador real. É exatamente essa a função da biblioteca `Selenium`, originalmente concebida para testes automatizados de software, mas amplamente adotada pela comunidade de dados como solução para raspagem dinâmica [@mitchell2018web].
+
+### Configuração do Webdriver
+
+O `Selenium` opera controlando um *webdriver*: um executável que atua como intermediário entre o código Python e um navegador instalado na máquina (como o Google Chrome). Em versões mais antigas da biblioteca, era necessário baixar manualmente o executável correspondente à versão exata do navegador instalado — um processo frágil e propenso a quebras a cada atualização. Desde a versão 4.6, o `Selenium` incorpora o *Selenium Manager* [@selenium2026docs], um mecanismo interno que detecta automaticamente a versão do navegador instalado e baixa o *driver* compatível, dispensando essa configuração manual.
+
+```{python}
+#| eval: false
+
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+
+# Configurando opções do navegador
+opcoes = Options()
+opcoes.add_argument("--headless")  # Executa sem abrir uma janela visível
+
+# O Selenium Manager cuida automaticamente do driver compatível
+navegador = webdriver.Chrome(options=opcoes)
+
+navegador.get("https://www.selenium.dev/selenium/web/web-form.html")
+print(navegador.title)
+
+navegador.quit()  # Encerra o processo do navegador
+```
+
+O parâmetro `--headless` merece destaque: ele instrui o navegador a operar em segundo plano, sem renderizar uma interface gráfica visível. Essa é a configuração padrão para scripts de raspagem em produção, já que reduz o consumo de recursos computacionais.
+
+### Interação com a Página
+
+Diferentemente do `BeautifulSoup`, que apenas lê uma "fotografia" estática do *HTML*, o `Selenium` permite simular ações humanas dentro do navegador controlado. Os métodos mais utilizados para localizar elementos são agrupados na classe `By`, que oferece estratégias de busca (por `ID`, por `CSS_SELECTOR`, por `XPATH`, entre outras). Uma vez localizado, o elemento pode ser manipulado através de métodos como `.click()`, para simular um clique, e `.send_keys()`, para preencher campos de formulário.
+
+```{python}
+#| eval: false
+
+from selenium.webdriver.common.by import By
+
+# Localizando um campo de texto pelo nome e preenchendo-o
+campo_texto = navegador.find_element(By.NAME, "my-text")
+campo_texto.send_keys("Estatística com Python")
+
+# Localizando e clicando no botão de envio
+botao_envio = navegador.find_element(By.CSS_SELECTOR, "button[type='submit']")
+botao_envio.click()
+```
+
+### Espera Explícita e Implícita
+
+Talvez o desafio mais característico da raspagem dinâmica seja o problema da sincronização: o código *Python* é executado em milissegundos, mas o carregamento de conteúdo via JavaScript pode levar segundos, dependendo da conexão e do servidor. Tentar extrair um elemento antes que ele tenha sido efetivamente renderizado resulta no erro `NoSuchElementException`.
+
+Para lidar com essa assincronia, o Selenium oferece dois mecanismos de espera. A espera implícita, configurada uma única vez com `navegador.implicitly_wait(segundos)`, instrui o driver a aguardar automaticamente, por um tempo máximo definido, antes de lançar um erro em qualquer tentativa de busca de elemento. Já a espera explícita, através da classe `WebDriverWait`, é uma abordagem mais precisa e recomendada em cenários de produção: ela permite pausar a execução até que uma condição específica seja satisfeita (como a presença ou a clicabilidade de um elemento), evitando tanto erros prematuros quanto esperas desnecessariamente longas.
+
+```{python}
+#| eval: false
+
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+# Aguarda até 10 segundos pela presença do elemento antes de prosseguir
+espera = WebDriverWait(navegador, 10)
+resultado = espera.until(
+    EC.presence_of_element_located((By.ID, "resultado-busca"))
+)
+```
+
+Diferentemente dos exemplos das seções 6.3 e 6.4, os blocos de código desta seção foram marcados com `#| eval: false` no cabeçalho do *chunk*. Isso ocorre porque a execução do `Selenium` depende de um navegador instalado e de conexão ativa com a internet no momento da renderização do documento — uma dependência externa que comprometeria a reprodutibilidade automática do livro em ambientes de compilação (CI/CD, por exemplo). O código permanece correto e executável na máquina do leitor, mas não será rodado automaticamente ao gerar o PDF/HTML do livro.
+
+## Estudos de Caso Completos
+
+Encerramos este capítulo consolidando, em dois estudos de caso de ponta a ponta, tudo o que foi discutido ao longo das seções anteriores: os fundamentos éticos da seção 6.1, a raspagem estática das seções 6.2 a 6.4 e a automação dinâmica da seção 6.5. O primeiro caso ilustra o fluxo estático completo sobre uma página real; o segundo, o fluxo dinâmico com Selenium.
+
+### Caso 1 (Estático): Extraindo uma Tabela Real com Requests e BeautifulSoup
+
+Diferentemente do exemplo controlado da seção 6.3, este estudo de caso aplica o fluxo completo sobre uma página real da internet, respeitando as boas práticas discutidas na seção 6.1: identificação via `User-Agent` e verificação do código de status antes de prosseguir com o processamento.
+
+Note que, ao contrário da função `pd.read_html()` apresentada na seção 6.4 (que automatiza toda a extração de uma tabela HTML), este exemplo demonstra o processo manual de construção de um `DataFrame` a partir dos elementos `find_all()`. Essa abordagem é necessária quando a estrutura da tabela é irregular demais para a inferência automática do pandas, ou quando se deseja um controle mais granular sobre a limpeza de cada célula durante a própria extração.
+
+```{python}
+
+import requests
+from bs4 import BeautifulSoup
+import pandas as pd
+
+url = "https://en.wikipedia.org/wiki/List_of_countries_by_GDP_(nominal)"
+cabecalhos = {"User-Agent": "Projeto-IC-UFJF-Gabriel (contato: gabrielaffonso@gmail.com)"}
+
+resposta = requests.get(url, headers=cabecalhos)
+
+if resposta.status_code == 200:
+    sopa = BeautifulSoup(resposta.text, "html.parser")
+    tabela = sopa.find("table", class_="wikitable")
+
+    linhas_html = tabela.find_all("tr")
+    cabecalho_tabela = [th.text.strip() for th in linhas_html[0].find_all("th")]
+
+    linhas_dados = []
+    for linha in linhas_html[1:]:
+        celulas = linha.find_all(["td", "th"])
+        valores = [celula.text.strip() for celula in celulas]
+        if valores:
+            linhas_dados.append(valores)
+
+    df_pib = pd.DataFrame(linhas_dados, columns=cabecalho_tabela[:len(linhas_dados[0])])
+    df_pib.to_csv("pib_paises.csv", index=False, encoding="utf-8")
+
+    print(f"Tabela extraída com sucesso: {df_pib.shape[0]} linhas.")
+    print(df_pib.head())
+else:
+    print(f"Falha na requisição. Status code: {resposta.status_code}")
+```
+
+É importante que o leitor esteja ciente de uma realidade prática da raspagem de dados: páginas reais frequentemente possuem estruturas irregulares (células mescladas, cabeçalhos aninhados, notas de rodapé embutidas), exigindo ajustes manuais que um exemplo controlado não demonstra. Esse é, inclusive, um dos motivos pelos quais scripts de raspagem quebram com o tempo — a estrutura HTML de uma página está sujeita a mudanças a qualquer momento, sem aviso prévio [@mitchell2018web].
+
+### Caso 2 (Dinâmico): Automatizando a Coleta com Selenium
+
+Para o estudo de caso dinâmico, utilizamos um ambiente construído especificamente para fins didáticos de raspagem de dados — o site *Quotes to Scrape* (em sua versão de rolagem infinita), que carrega novas citações via *JavaScript* à medida que o usuário rola a página para baixo. Por ser um ambiente público criado justamente para práticas de scraping, seu uso é livre de questões éticas ou de sobrecarga indevida de servidores de terceiros.
+
+O *script* abaixo simula a rolagem da página, aguarda o carregamento do conteúdo dinâmico e extrai o texto de cada citação junto ao seu respectivo autor.
+
+```{python}
+
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+import time
+import pandas as pd
+
+opcoes = Options()
+opcoes.add_argument("--headless")
+
+navegador = webdriver.Chrome(options=opcoes)
+navegador.get("https://quotes.toscrape.com/scroll")
+
+espera = WebDriverWait(navegador, 10)
+
+# Simulando rolagem da página para acionar o carregamento dinâmico
+for _ in range(5):
+    navegador.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+    time.sleep(1.5)  # Aguarda o carregamento via JavaScript
+
+# Espera explícita pela presença de ao menos uma citação
+espera.until(EC.presence_of_element_located((By.CLASS_NAME, "quote")))
+
+citacoes_elementos = navegador.find_elements(By.CLASS_NAME, "quote")
+
+dados_citacoes = []
+for elemento in citacoes_elementos:
+    texto = elemento.find_element(By.CLASS_NAME, "text").text
+    autor = elemento.find_element(By.CLASS_NAME, "author").text
+    dados_citacoes.append({"citacao": texto, "autor": autor})
+
+navegador.quit()
+
+df_citacoes = pd.DataFrame(dados_citacoes)
+df_citacoes.to_csv("citacoes_dinamicas.csv", index=False, encoding="utf-8")
+
+print(f"Total de citações coletadas: {len(df_citacoes)}")
+print(df_citacoes.head())
+```
+
+Note que a combinação de `execute_script()` (para simular a rolagem via JavaScript) com a espera explícita `WebDriverWait` resume, na prática, os dois grandes desafios da raspagem dinâmica discutidos na seção 5.5: a necessidade de interagir com a página e a necessidade de sincronizar essa interação com o tempo de resposta do servidor.
+

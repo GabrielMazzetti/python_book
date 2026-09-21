@@ -3,19 +3,20 @@ project:
   output-dir: _book
   
 book: 
-  title: "Introdução ao Python e Web Scraping"
+  title: "Python, Web Scraping e Livros Digitais: Uma Introdução"
   author: "Gabriel Sanábio Mazzetti Affonso"
   date: today
   repo-url: https://github.com/GabrielMazzetti/python_book
   chapters: 
     - index.qmd
-    - introducao.qmd
-    - config_amb.qmd
-    - fundamentos.qmd
-    - analise_exploratoria.qmd
-    - comp_numerica.qmd
-    - web_scraping.qmd
-    - referencias.qmd
+    - capitulos/introducao.qmd
+    - capitulos/config_amb.qmd
+    - capitulos/fundamentos.qmd
+    - capitulos/analise_exploratoria.qmd
+    - capitulos/comp_numerica.qmd
+    - capitulos/web_scraping.qmd
+    - capitulos/livros.qmd
+    - capitulos/referencias.qmd
     
 bibliography: referencias.bib
 csl: associacao-brasileira-de-normas-tecnicas.csl

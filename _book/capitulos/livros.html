@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Gabriel Sanábio Mazzetti Affonso">
+<meta name="author" content="Nome">
 
-<title>Python, Web Scraping e Livros Digitais: Uma Introdução</title>
+<title>Capítulo 7: Estruturação de Relatórios – Python, Web Scraping e Livros Digitais: Uma Introdução</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,31 +21,52 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 1em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./capitulos/introducao.html" rel="next">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-364982630eef5352dd1537128a8ed5cb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-b9e11ad5a37ead2aabff839d95ae3857.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-364982630eef5352dd1537128a8ed5cb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../capitulos/referencias.html" rel="next">
+<link href="../capitulos/web_scraping.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-364982630eef5352dd1537128a8ed5cb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-b9e11ad5a37ead2aabff839d95ae3857.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-364982630eef5352dd1537128a8ed5cb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -74,6 +95,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -248,7 +298,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Prefácio</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../capitulos/livros.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Livros Digitais: Estruturação de relatórios dinâmicos via <em>Quarto</em></span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Procurar" onclick="window.quartoOpenSearch();">
@@ -263,7 +313,7 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Python, Web Scraping e Livros Digitais: Uma Introdução</a> 
+      <a href="../">Python, Web Scraping e Livros Digitais: Uma Introdução</a> 
         <div class="sidebar-tools-main">
     <a href="https://github.com/GabrielMazzetti/python_book" title="Código fonte" class="quarto-navigation-tool px-1" aria-label="Código fonte"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo escuro"><i class="bi"></i></a>
@@ -279,55 +329,55 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Prefácio</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./capitulos/introducao.html" class="sidebar-item-text sidebar-link">
+  <a href="../capitulos/introducao.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./capitulos/config_amb.html" class="sidebar-item-text sidebar-link">
+  <a href="../capitulos/config_amb.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Configurando o Ambiente de Trabalho</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./capitulos/fundamentos.html" class="sidebar-item-text sidebar-link">
+  <a href="../capitulos/fundamentos.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Fundamentos</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./capitulos/analise_exploratoria.html" class="sidebar-item-text sidebar-link">
+  <a href="../capitulos/analise_exploratoria.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Análise Exploratória e Manipulação de Dados em <em>Python</em></span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./capitulos/comp_numerica.html" class="sidebar-item-text sidebar-link">
+  <a href="../capitulos/comp_numerica.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Computação Numérica com NumPy</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./capitulos/web_scraping.html" class="sidebar-item-text sidebar-link">
+  <a href="../capitulos/web_scraping.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Web Scraping</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./capitulos/livros.html" class="sidebar-item-text sidebar-link">
+  <a href="../capitulos/livros.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Livros Digitais: Estruturação de relatórios dinâmicos via <em>Quarto</em></span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./capitulos/referencias.html" class="sidebar-item-text sidebar-link">
+  <a href="../capitulos/referencias.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Referências</span></span></a>
   </div>
 </li>
@@ -341,7 +391,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Índice</h2>
    
   <ul>
-  <li><a href="#prefácio" id="toc-prefácio" class="nav-link active" data-scroll-target="#prefácio">Prefácio</a></li>
+  <li><a href="#a-evolução-para-o-quarto" id="toc-a-evolução-para-o-quarto" class="nav-link active" data-scroll-target="#a-evolução-para-o-quarto"><span class="header-section-number">7.1</span> A Evolução para o <em>Quarto</em></a></li>
+  <li><a href="#a-estrutura-de-metadados-o-cabeçalho-yaml" id="toc-a-estrutura-de-metadados-o-cabeçalho-yaml" class="nav-link" data-scroll-target="#a-estrutura-de-metadados-o-cabeçalho-yaml"><span class="header-section-number">7.2</span> A Estrutura de Metadados (O Cabeçalho <em>YAML</em>)</a></li>
+  <li><a href="#templates-e-padronização-visual" id="toc-templates-e-padronização-visual" class="nav-link" data-scroll-target="#templates-e-padronização-visual"><span class="header-section-number">7.3</span> <em>Templates</em> e Padronização Visual</a></li>
+  <li><a href="#elementos-científicos-e-tabelas-complexas" id="toc-elementos-científicos-e-tabelas-complexas" class="nav-link" data-scroll-target="#elementos-científicos-e-tabelas-complexas"><span class="header-section-number">7.4</span> Elementos Científicos e Tabelas Complexas</a></li>
+  <li><a href="#compilação-de-livros-digitais-o-arquivo-_quarto.yml" id="toc-compilação-de-livros-digitais-o-arquivo-_quarto.yml" class="nav-link" data-scroll-target="#compilação-de-livros-digitais-o-arquivo-_quarto.yml"><span class="header-section-number">7.5</span> Compilação de Livros Digitais (O arquivo <code>_quarto.yml</code>)</a></li>
   </ul>
 </nav>
     </div>
@@ -351,26 +405,14 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Python, Web Scraping e Livros Digitais: Uma Introdução</h1>
+<h1 class="title">Capítulo 7: Estruturação de Relatórios</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Autor</div>
-    <div class="quarto-title-meta-contents">
-             <p>Gabriel Sanábio Mazzetti Affonso </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Data de Publicação</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">21 de setembro de 2026</p>
-    </div>
-  </div>
   
     
   </div>
@@ -380,15 +422,66 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="prefácio" class="level1 unnumbered">
-<h1 class="unnumbered">Prefácio</h1>
-<p>O presente material consiste na consolidação dos resultados de pesquisa obtidos durante o período de Iniciação Científica, no contexto do projeto <strong>Métodos de Aprendizado Estatístico para Discriminação e Classificação: Aplicações à Indústria 4.0 – Fase 3</strong>. Este documento visa não só o detalhamento dos métodos de coleta de dados via <em>Web Scraping</em>, mas também a viabilidade do uso do <em>Python</em> para tal, além de destacar as especificidades da linguagem e suas vantagens para o aprendizado de métodos estatísticos e computacionais.</p>
-<p>Neste contexto, vale ressaltar que o material é de cunho introdutório, buscando viabilizar o aprendizado do <em>Python</em> enquanto linguagem de programação e do <em>Web Scraping</em> como técnica poderosa de coleta de dados. Dessa forma, seu foco é desenvolver, no estatístico, o interesse pelos diversos recursos computacionais que podem auxiliá-los enquanto profissionais e estudiosos da área..</p>
-<p>A motivação para o desenvolvimento deste material surgiu da necessidade de diversificar as ferramentas de aplicação computacional existentes para analisar dados. A interseção entre a teoria estatística e a aplicação dos métodos se sustenta no casamento entre o rigor matemático e a modernidade computacional. Qualquer das partes que for negligenciada ocasionará problemas ou limitações importantes.</p>
-<p>Ademais, é válido ressaltar a seção extra presente no material, desenvolvida com o intuito de explicar a estrutura dos livros digitais, como esse, usando o <em>Quarto</em>. Ainda que muitos considerem adequado o uso do <em>Bookdown</em> para este tipo de trabalho (o que é totalmente válido, dadas as especificidades do Rmarkdown), o <em>Quarto</em> se mostrou uma espécie de sucessor natural muito adequado, apresentando ferramentas modernas e extremamente úteis para detalhes de <em>layout</em>, especialmente tratando de documentos compilados em <em>HTML</em>.</p>
-<p>Por fim, deixo aqui minha gratidão à Universidade Federal de Juiz de Fora (UFJF) pelo ambiente acadêmico. Agradeço, especialmente, ao meu orientador, Professor Doutor Lupércio França Bessegato, pela oportunidade e pelo acompanhamento técnico que possibilitaram o desenvolvimento deste trabalho.</p>
+<hr>
+<p>No ecossistema da Ciência de Dados, o fluxo de trabalho não se encerra na obtenção do modelo ou na geração da tabela final. A reprodutibilidade da pesquisa e a clareza na transmissão do conhecimento exigem que os resultados sejam integrados a relatórios dinâmicos, nos quais o código que gera a análise e o texto que a interpreta coexistam no mesmo ambiente. É neste contexto que ferramentas de autoria científica se tornam indispensáveis.</p>
+<section id="a-evolução-para-o-quarto" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="a-evolução-para-o-quarto"><span class="header-section-number">7.1</span> A Evolução para o <em>Quarto</em></h2>
+<p>Historicamente, a comunidade estatística estabeleceu um padrão na geração de relatórios dinâmicos através do <em>R Markdown</em>. No entanto, com a consolidação do <em>Python</em> e de outras linguagens como o <em>Julia</em> no cenário analítico, o acoplamento exclusivo ao ecossistema do <em>R</em> tornou-se uma limitação.</p>
+<p>O <em>Quarto</em> surge como a evolução natural e o sucessor de nova geração do <em>R Markdown</em>. Desenvolvido pela <em>Posit</em>, trata-se de um sistema de publicação científica e técnica de código aberto construído sobre o <em>Pandoc.</em> Sua principal revolução é ser intrinsecamente agnóstico em relação à linguagem de programação: ele é capaz de compilar scripts nativos de <em>Python</em> (através do motor <em>Jupyter</em>), <em>R</em> (via <em>Knitr</em>) e <em>Julia</em>, transformando arquivos de texto puro (<code>.qmd</code>) em documentos de altíssima qualidade visual, como relatórios em PDF, dashboards em HTML, e livros digitais completos.</p>
+<p>Adotar o <em>Quarto</em> significa abandonar a prática de copiar e colar gráficos soltos em editores de texto tradicionais — um processo manual, sujeito a erros e impossível de ser atualizado automaticamente quando a base de dados muda.</p>
+</section>
+<section id="a-estrutura-de-metadados-o-cabeçalho-yaml" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="a-estrutura-de-metadados-o-cabeçalho-yaml"><span class="header-section-number">7.2</span> A Estrutura de Metadados (O Cabeçalho <em>YAML</em>)</h2>
+<p>Todo documento Quarto é dividido fundamentalmente em três partes: o cabeçalho de metadados, o texto em marcação (<em>Markdown</em>) e os blocos de código executáveis (<em>chunks</em>). O controle do comportamento do documento ocorre primordialmente no topo do arquivo, em uma seção isolada por três traços (<code>---</code>), escrita em uma linguagem de serialização chamada YAML (<em>YAML Ain’t Markup Language</em>).</p>
+<p>É no <em>YAML</em> que definimos as diretrizes globais do projeto: o motor de renderização, o formato de saída, as opções padrão de execução dos códigos e a padronização do leiaute.</p>
+<p>Quando trabalhamos com projetos escaláveis ou livros com múltiplos capítulos, é imperativo garantir uma identidade visual coesa e um rastreamento interno eficiente. Para isso, configuramos referências customizadas. O exemplo abaixo demonstra um cabeçalho <em>YAML</em> profissional, pronto para produção, que aplica a configuração de estilo definida para os seus projetos (que chamaremos de “Meu template”) e estabelece o identificador interno exigido (que será “m_template”):</p>
+<p>Vamos entender as chaves deste cabeçalho:</p>
+<ul>
+<li><p>A subchave <code>template</code> sob <code>format:</code> garante que, independentemente do capítulo renderizado, a identidade visual carregue estritamente as customizações do “Meu Template”.</p></li>
+<li><p>A chave<code>project: id</code> atua como um rastreador interno nos bastidores da compilação. Isso é especialmente útil em projetos grandes, onde extensões e scripts secundários precisam referenciar a estrutura matriz do projeto.</p></li>
+<li><p>A chave <code>execute</code> define um comportamento global para os chunks de <em>Python.</em> Ao definir <code>warning: false</code> e <code>message: false</code>, garantimos que o relatório final seja limpo e legível, livre de alertas de compilação ou mensagens de carregamento de pacotes que não interessam ao leitor final.</p></li>
+</ul>
+</section>
+<section id="templates-e-padronização-visual" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="templates-e-padronização-visual"><span class="header-section-number">7.3</span> <em>Templates</em> e Padronização Visual</h2>
+<p>Quando um projeto de Ciência de Dados ganha escala, ultrapassando a barreira de um único script e se tornando uma obra de múltiplos capítulos ou relatórios periódicos, a manutenção de uma identidade visual consistente torna-se primordial. O <em>Quarto</em> oferece suporte nativo a temas Bootswatch (como <code>cosmo</code>, <code>flatly</code> ou <code>journal</code>), mas a verdadeira robustez reside no uso de <em>Templates</em> customizados e extensões.</p>
+<p>Através da interface de linha de comando (CLI) do <em>Quarto</em>, é possível instalar extensões de formatação que encapsulam folhas de estilo (<em>CSS</em> ou <em>SCSS</em>), arquivos de marcação parcial e lógicas de numeração. Ao definirmos um modelo próprio no <em>YAML</em> (como o Meu Template configurado na seção anterior), garantimos que todos os títulos, espaçamentos, fontes e blocos de código gerados no projeto obedeçam estritamente ao mesmo padrão visual.</p>
+<p>Essa modularidade é o que permite que uma equipe de dados se preocupe exclusivamente com a lógica estatística e o conteúdo, enquanto o template assume, nos bastidores, a responsabilidade de manter a apresentação com qualidade de publicação. O domínio dessas customizações avançadas e da estruturação de projetos e livros digitais no ecossistema do Quarto deve muito às contribuições da comunidade de desenvolvedores e educadores, destacando-se materiais práticos e tutoriais de referência como os desenvolvidos por Hall <span class="citation" data-cites="hall_quarto">(<a href="referencias.html#ref-hall_quarto" role="doc-biblioref">2026</a>)</span>.</p>
+</section>
+<section id="elementos-científicos-e-tabelas-complexas" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="elementos-científicos-e-tabelas-complexas"><span class="header-section-number">7.4</span> Elementos Científicos e Tabelas Complexas</h2>
+<p>A produção de documentos técnicos institucionais — como, por exemplo, a publicação de um Sumário Brasileiro de Touros da EMBRAPA ou de boletins epidemiológicos governamentais — impõe desafios de formatação que vão muito além da exportação padrão de um DataFrame. Nesses cenários, a comunicação exige diagramação avançada, mapas interativos e matemática rigorosa.</p>
+<p>O Quarto se destaca ao permitir que o texto e as saídas das linguagens de programação interajam perfeitamente com a tipografia científica:</p>
+<ul>
+<li>Tabelas Estruturadas e Índices Complexos</li>
+</ul>
+<p>A função padrão de exibição de dados (<code>print()</code>) é insuficiente para publicações oficiais. Um caso clássico é a apresentação de tabelas com múltiplos níveis hierárquicos, como as necessárias para detalhar índices específicos de performance (por exemplo, a estruturação de uma tabela para o índice IPGL, do Sumário Brasileiro de Touros da EMBRAPA). O <em>Quarto</em> integra-se perfeitamente a pacotes de estilização avançada. Se o código base for <em>Python</em>, bibliotecas como <code>great_tables</code> ou a própria estilização nativa do pandas (<code>df.style</code>) são renderizadas em <em>HTML</em> ou <em>LaTeX</em> estrito. Se o ambiente envolver integração com <em>R</em>, o pacote <code>kableExtra</code> permite a construção de cabeçalhos agrupados e notas de rodapé essenciais para relatórios institucionais.</p>
+<ul>
+<li>Renderização de Mapas e Gráficos Interativos</li>
+</ul>
+<p>A integração espacial é frequentemente necessária em projetos de larga escala. Se o relatório exigir o mapeamento de informações geoespaciais, o Quarto compila mapas gerados pelo pacote <code>leaflet</code> diretamente no livro digital. No formato <em>HTML</em>, os mapas mantêm sua interatividade (zoom e pan); no formato PDF, o motor captura um “print” de alta qualidade.</p>
+<ul>
+<li>Notação Matemática e Metodologia Estatística</li>
+</ul>
+<p>Um relatório científico frequentemente precisa explicitar suas escolhas metodológicas sob a ótica matemática. O <em>Quarto</em> suporta a sintaxe <em>LaTeX</em> nativamente. Isso significa que podemos “escrever matemática” de forma livre, como se estivéssemos no papel, como por exemplo a especificação formal de matrizes de contrastes ortogonais, os parâmetros de ponderação (como os Ptgs de um projeto) e as equações de inferência, garantindo que o leitor entenda não apenas o resultado do código, mas a teoria por trás dele.</p>
+<p>Um bloco de equação no <em>Quarto</em> é escrito delimitando a matemática com duplos cifrões <code>$$</code>:</p>
+<p>A equação do modelo linear múltiplo, por exemplo, é definida por:</p>
+<p><span class="math display">\[Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \dots + \beta_k X_k + \epsilon\]</span></p>
+</section>
+<section id="compilação-de-livros-digitais-o-arquivo-_quarto.yml" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="compilação-de-livros-digitais-o-arquivo-_quarto.yml"><span class="header-section-number">7.5</span> Compilação de Livros Digitais (O arquivo <code>_quarto.yml</code>)</h2>
+<p>Até aqui, tratamos os capítulos como arquivos .qmd independentes. No entanto, a verdadeira força do Quarto para publicações extensas reside na sua capacidade de orquestrar múltiplos arquivos em uma única obra coesa (um <em>book</em>).</p>
+<p>Essa orquestração não é feita dentro dos capítulos, mas sim em um arquivo de configuração mestre chamado <code>_quarto.yml</code>, localizado na raiz do diretório do projeto. É ele que dita a estrutura de navegação, a ordem de compilação e as configurações globais.</p>
+<p>Quando executamos o comando de renderização, o compilador lê primeiramente este arquivo. Se ele indicar que o projeto é do tipo <em>book</em>, o <em>Quarto</em> unificará os capítulos, criará um sumário global interativo (para <em>HTML</em>) ou um índice analítico (para PDF), e resolverá automaticamente todas as referências cruzadas ao longo do texto.</p>
+<p>Abaixo, temos um exemplo prático da estrutura de um arquivo <code>_quarto.yml</code> para a compilação de um livro:</p>
+<p>Com essa arquitetura, a adição de um novo capítulo ou a reorganização da ordem de leitura exige apenas a modificação de uma linha de texto na lista chapters. Essa abordagem elimina o trabalho braçal de diagramação e permite que o foco do analista permaneça onde realmente importa: na estatística, na análise e na comunicação clara dos resultados.</p>
 
 
+<div id="refs" class="references csl-bib-body" data-entry-spacing="1" role="list" style="display: none">
+<div id="ref-hall_quarto" class="csl-entry" role="listitem">
+HALL, Meghan. <strong>Meghan Hall - Data Analysis, R, and Quarto</strong>., 2026. Disponível em: &lt;<a href="https://meghan.rbind.io">https://meghan.rbind.io</a>&gt;
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->
@@ -806,10 +899,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="../capitulos/web_scraping.html" class="pagination-link" aria-label="Web Scraping">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Web Scraping</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./capitulos/introducao.html" class="pagination-link" aria-label="Introdução">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../capitulos/referencias.html" class="pagination-link" aria-label="Referências">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Referências</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Gabriel Sanábio Mazzetti Affonso">
 
-<title>Python, Web Scraping e Livros Digitais: Uma Introdução</title>
+<title>1&nbsp; Introdução – Python, Web Scraping e Livros Digitais: Uma Introdução</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,28 +23,29 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./capitulos/introducao.html" rel="next">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-364982630eef5352dd1537128a8ed5cb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-b9e11ad5a37ead2aabff839d95ae3857.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-364982630eef5352dd1537128a8ed5cb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../capitulos/config_amb.html" rel="next">
+<link href="../index.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-364982630eef5352dd1537128a8ed5cb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-b9e11ad5a37ead2aabff839d95ae3857.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-364982630eef5352dd1537128a8ed5cb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -248,7 +248,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Prefácio</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../capitulos/introducao.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Procurar" onclick="window.quartoOpenSearch();">
@@ -263,7 +263,7 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Python, Web Scraping e Livros Digitais: Uma Introdução</a> 
+      <a href="../">Python, Web Scraping e Livros Digitais: Uma Introdução</a> 
         <div class="sidebar-tools-main">
     <a href="https://github.com/GabrielMazzetti/python_book" title="Código fonte" class="quarto-navigation-tool px-1" aria-label="Código fonte"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo escuro"><i class="bi"></i></a>
@@ -279,55 +279,55 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Prefácio</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./capitulos/introducao.html" class="sidebar-item-text sidebar-link">
+  <a href="../capitulos/introducao.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./capitulos/config_amb.html" class="sidebar-item-text sidebar-link">
+  <a href="../capitulos/config_amb.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Configurando o Ambiente de Trabalho</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./capitulos/fundamentos.html" class="sidebar-item-text sidebar-link">
+  <a href="../capitulos/fundamentos.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Fundamentos</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./capitulos/analise_exploratoria.html" class="sidebar-item-text sidebar-link">
+  <a href="../capitulos/analise_exploratoria.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Análise Exploratória e Manipulação de Dados em <em>Python</em></span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./capitulos/comp_numerica.html" class="sidebar-item-text sidebar-link">
+  <a href="../capitulos/comp_numerica.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Computação Numérica com NumPy</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./capitulos/web_scraping.html" class="sidebar-item-text sidebar-link">
+  <a href="../capitulos/web_scraping.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Web Scraping</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./capitulos/livros.html" class="sidebar-item-text sidebar-link">
+  <a href="../capitulos/livros.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Livros Digitais: Estruturação de relatórios dinâmicos via <em>Quarto</em></span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./capitulos/referencias.html" class="sidebar-item-text sidebar-link">
+  <a href="../capitulos/referencias.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Referências</span></span></a>
   </div>
 </li>
@@ -341,7 +341,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Índice</h2>
    
   <ul>
-  <li><a href="#prefácio" id="toc-prefácio" class="nav-link active" data-scroll-target="#prefácio">Prefácio</a></li>
+  <li><a href="#a-importância-do-python-na-estatística" id="toc-a-importância-do-python-na-estatística" class="nav-link active" data-scroll-target="#a-importância-do-python-na-estatística"><span class="header-section-number">1.1</span> A importância do Python na Estatística</a></li>
+  <li><a href="#o-escopo-deste-material" id="toc-o-escopo-deste-material" class="nav-link" data-scroll-target="#o-escopo-deste-material"><span class="header-section-number">1.2</span> O escopo deste material</a></li>
   </ul>
 </nav>
     </div>
@@ -351,26 +352,14 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Python, Web Scraping e Livros Digitais: Uma Introdução</h1>
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Autor</div>
-    <div class="quarto-title-meta-contents">
-             <p>Gabriel Sanábio Mazzetti Affonso </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Data de Publicação</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">21 de setembro de 2026</p>
-    </div>
-  </div>
   
     
   </div>
@@ -380,13 +369,27 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="prefácio" class="level1 unnumbered">
-<h1 class="unnumbered">Prefácio</h1>
-<p>O presente material consiste na consolidação dos resultados de pesquisa obtidos durante o período de Iniciação Científica, no contexto do projeto <strong>Métodos de Aprendizado Estatístico para Discriminação e Classificação: Aplicações à Indústria 4.0 – Fase 3</strong>. Este documento visa não só o detalhamento dos métodos de coleta de dados via <em>Web Scraping</em>, mas também a viabilidade do uso do <em>Python</em> para tal, além de destacar as especificidades da linguagem e suas vantagens para o aprendizado de métodos estatísticos e computacionais.</p>
-<p>Neste contexto, vale ressaltar que o material é de cunho introdutório, buscando viabilizar o aprendizado do <em>Python</em> enquanto linguagem de programação e do <em>Web Scraping</em> como técnica poderosa de coleta de dados. Dessa forma, seu foco é desenvolver, no estatístico, o interesse pelos diversos recursos computacionais que podem auxiliá-los enquanto profissionais e estudiosos da área..</p>
-<p>A motivação para o desenvolvimento deste material surgiu da necessidade de diversificar as ferramentas de aplicação computacional existentes para analisar dados. A interseção entre a teoria estatística e a aplicação dos métodos se sustenta no casamento entre o rigor matemático e a modernidade computacional. Qualquer das partes que for negligenciada ocasionará problemas ou limitações importantes.</p>
-<p>Ademais, é válido ressaltar a seção extra presente no material, desenvolvida com o intuito de explicar a estrutura dos livros digitais, como esse, usando o <em>Quarto</em>. Ainda que muitos considerem adequado o uso do <em>Bookdown</em> para este tipo de trabalho (o que é totalmente válido, dadas as especificidades do Rmarkdown), o <em>Quarto</em> se mostrou uma espécie de sucessor natural muito adequado, apresentando ferramentas modernas e extremamente úteis para detalhes de <em>layout</em>, especialmente tratando de documentos compilados em <em>HTML</em>.</p>
-<p>Por fim, deixo aqui minha gratidão à Universidade Federal de Juiz de Fora (UFJF) pelo ambiente acadêmico. Agradeço, especialmente, ao meu orientador, Professor Doutor Lupércio França Bessegato, pela oportunidade e pelo acompanhamento técnico que possibilitaram o desenvolvimento deste trabalho.</p>
+<p>Na prática, a estatística contemporânea vai muito além do domínio teórico dos fundamentos, da modelagem probabilística e da inferência. A sociedade atual convive com uma realidade em que os dados são o produto mais valioso existente, além simplesmente de fontes de informação. Dessa forma, observa-se nos últimos anos o surgimento de conceitos como o <em>Big Data</em>, para descrever o fenômeno da quantidade massiva de dados que alteram significamente o fluxo de trabalho do analista de dados, exigindo deste profissional, muitas vezes, muito além da capacidade de analisar dados. É necessário ter aptidão para manusear os dados apropriadamente, buscá-los em diferentes fontes, criar filtros especificos relativos às necessidades de um determinado problema, entre outras habilidades.</p>
+<p>Neste contexto, este material foi elaborado com o intuito de introduzir a linguagem <em>Python</em> no arsenal analítico de estudantes e profissionais de Estatística, demonstrando sua viabilidade e potência para a análise de dados e a automação de rotinas de trabalho.</p>
+<section id="a-importância-do-python-na-estatística" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="a-importância-do-python-na-estatística"><span class="header-section-number">1.1</span> A importância do Python na Estatística</h2>
+<p>Tradicionalmente, a linguagem <em>R</em> ocupa um lugar importante na formação do estatístico, por ser uma linguagem vetorizada e já desenvolvida para o trabalho com dados. Porém, apesar do poder do <em>R</em> e seus pacotes nos trabalhos de modelagem de dados e no uso de testes clássicos (paramétricos e não-paramétricos), o <em>Python</em> consolidou-se como uma linguagem extremamente versátil, que permite aplicações robustas (como as de <em>Machine Learning</em>, por exemplo) e a integração de sistemas.</p>
+<p>Em termos de aprendizado, o <em>Python</em> é facilmente assimilado por quem já teve contato com algoritmos, por conta de sua similaridade com linguagens compiladas, como no caso do <em>C++</em> (exigindo apenas adaptações sintatícas), e com linguagens interpretadas, como o <em>R</em>.</p>
+<p>Na prática, o <em>Python</em> apresenta sua maior vantagem ao analisarmos sua quantidade de usuários e, consequentemente, sua quantidade de bibliotecas desenvolvidas para diferentes aplicações. No contexto da Estatística, destacamos o <em>pandas</em>, para estruturação de dados tabulares, e o <em>numpy</em>, para computação numérica de alta performance. O domínio dessas ferramentas permite ao analista processar grandes volumes de dados com eficiência, além de explorar diferentes possibilidades, como a de romper com a dependência de bancos de dados pré-estruturados através da automatização da coleta de dados via <em>internet</em>.</p>
+</section>
+<section id="o-escopo-deste-material" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="o-escopo-deste-material"><span class="header-section-number">1.2</span> O escopo deste material</h2>
+<p>Este material tem um teor introdutório e prático. Ele não tem a intenção de esgotar as funcionalidades do <em>Python</em> (que seria, inclusive, uma tarefa praticamente impossível), tampouco de aprofundar-se nas teorias estatísticas que fundamentam nossas análises ou na teoria computacional que fundamenta e explica as especificidades da linguagem. O objetivo central é ser uma ponte rápida para profissionais de Estatística compreenderem a linguagem e o ecossistema, e como podem se beneficiar deles.</p>
+<p>Neste âmbito, a abordagem adotada se resume em execução de códigos e análise de resultados práticos, de forma que o conhecimento seja construído sequencialmente, como se segue:</p>
+<ul>
+<li><p>Capítulo 2 - Configurando o Ambiente de Trabalho: Apresenta as instruções necessárias para preparar o ambiente de desenvolvimento, abordando a integração do <em>Python</em> dentro do <em>RStudio</em> (via pacote <em>reticulate</em>) e o gerenciamento de bibliotecas.</p></li>
+<li><p>Capítulo 3 - Fundamentos do <em>Python</em> para Análise de Dados: Revisa as operações básicas, tipos de dados e a criação de funções, estabelecendo a base sintática da linguagem.</p></li>
+<li><p>Capítulo 4 - Manipulação e Análise Exploratória de Dados: Introduz a biblioteca pandas e a criação de visualizações, utilizando conjuntos de dados clássicos (como <em>Titanic</em> e <em>Iris</em>) para demonstrar o tratamento e a exploração de informações categóricas e numéricas.</p></li>
+<li><p>Capítulo 5 - Computação Numérica com <em>NumPy</em>: Foca no uso de arrays multidimensionais e operações vetorizadas, ilustrando seu poder computacional através de simulações estatísticas.</p></li>
+<li><p>Capítulo 6 - Coleta de Dados via <em>Web Scraping</em>: Demonstra como construir bases de dados próprias automatizando a extração de informações de páginas da internet, sempre pautado por boas práticas e ética na raspagem de dados.</p></li>
+<li><p>Capítulo 7 - Estrutura de Livros Digitais (via <em>Quarto</em>): Explica brevemente a estrutura de arquivos e códigos para o desenvolvimento de livros digitais, utilizando o <em>Rmarkdown</em> para os códigos e textos e a ferramenta <em>Quarto</em> para a compilação.</p></li>
+</ul>
+<p>Espera-se que, ao final deste conteúdo, o estudante ou profissional de Estatística sinta-se confortável para importar, manipular e coletar dados em <em>Python</em>, além de estar apto a construir livros digitais que podem ser ferramentas ainda mais robustas que os relatórios padrão, tendo base sólida para estudos posteriores mais aprofundados nestas ferramentas e suas possibilidades.</p>
 
 
 </section>
@@ -806,10 +809,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="../index.html" class="pagination-link" aria-label="Prefácio">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Prefácio</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./capitulos/introducao.html" class="pagination-link" aria-label="Introdução">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../capitulos/config_amb.html" class="pagination-link" aria-label="Configurando o Ambiente de Trabalho">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Configurando o Ambiente de Trabalho</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

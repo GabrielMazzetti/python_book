@@ -941,7 +941,7 @@ utilizamos o seaborn para criar um gráfico de barras.
 \NormalTok{    data}\OperatorTok{=}\NormalTok{titanic\_limpo, }
 \NormalTok{    x}\OperatorTok{=}\StringTok{\textquotesingle{}class\textquotesingle{}}\NormalTok{, }
 \NormalTok{    hue}\OperatorTok{=}\StringTok{\textquotesingle{}survived\textquotesingle{}}\NormalTok{, }
-\NormalTok{    palette}\OperatorTok{=}\StringTok{\textquotesingle{}Set2\textquotesingle{}}
+\NormalTok{    palette}\OperatorTok{=}\NormalTok{[}\StringTok{"\#E69F00"}\NormalTok{, }\StringTok{"\#56B4E9"}\NormalTok{, }\StringTok{"\#CC79A7"}\NormalTok{]}
 \NormalTok{)}
 \NormalTok{plt.title(}\StringTok{"Sobrevivência por Classe de Passageiro"}\NormalTok{)}
 \NormalTok{plt.xlabel(}\StringTok{"Classe"}\NormalTok{)}
@@ -960,7 +960,12 @@ Second        97   87
 Third        372  119
 \end{verbatim}
 
-\pandocbounded{\includegraphics[keepaspectratio]{capitulos/analise_exploratoria_files/figure-pdf/cell-2-output-2.png}}
+\begin{verbatim}
+C:\Users\gabri\AppData\Local\Temp\ipykernel_13920\2615282862.py:23: UserWarning: The palette list has more values (3) than needed (2), which may not be intended.
+  sns.countplot(
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{capitulos/analise_exploratoria_files/figure-pdf/cell-2-output-3.png}}
 
 \subsection{\texorpdfstring{Análise de Dados Contínuos:
 \emph{Iris}}{Análise de Dados Contínuos: Iris}}\label{anuxe1lise-de-dados-contuxednuos-iris}
@@ -1002,7 +1007,7 @@ variável categórica, como a espécie da flor.
 \NormalTok{    x}\OperatorTok{=}\StringTok{\textquotesingle{}petal\_length\textquotesingle{}}\NormalTok{, }
 \NormalTok{    y}\OperatorTok{=}\StringTok{\textquotesingle{}petal\_width\textquotesingle{}}\NormalTok{, }
 \NormalTok{    hue}\OperatorTok{=}\StringTok{\textquotesingle{}species\textquotesingle{}}\NormalTok{, }
-\NormalTok{    palette}\OperatorTok{=}\StringTok{\textquotesingle{}deep\textquotesingle{}}\NormalTok{,}
+\NormalTok{    palette}\OperatorTok{=}\NormalTok{[}\StringTok{"\#E69F00"}\NormalTok{, }\StringTok{"\#56B4E9"}\NormalTok{, }\StringTok{"\#CC79A7"}\NormalTok{],}
 \NormalTok{    s}\OperatorTok{=}\DecValTok{80} \CommentTok{\# Tamanho dos pontos}
 \NormalTok{)}
 \NormalTok{plt.title(}\StringTok{"Relação entre Comprimento e Largura da Pétala"}\NormalTok{)}
@@ -1344,7 +1349,8 @@ O script a seguir realiza essas duas simulações:
 
 \CommentTok{\# Plotando o resultado para evidenciar a convergência assintótica}
 \NormalTok{plt.figure(figsize}\OperatorTok{=}\NormalTok{(}\DecValTok{8}\NormalTok{, }\DecValTok{5}\NormalTok{))}
-\NormalTok{sns.histplot(medias\_amostrais, kde}\OperatorTok{=}\VariableTok{True}\NormalTok{, stat}\OperatorTok{=}\StringTok{"density"}\NormalTok{, color}\OperatorTok{=}\StringTok{"tomato"}\NormalTok{, bins}\OperatorTok{=}\DecValTok{60}\NormalTok{)}
+\NormalTok{sns.histplot(medias\_amostrais, stat}\OperatorTok{=}\StringTok{"density"}\NormalTok{, color}\OperatorTok{=}\StringTok{"\#E69F00"}\NormalTok{, bins}\OperatorTok{=}\DecValTok{60}\NormalTok{, alpha}\OperatorTok{=}\FloatTok{0.7}\NormalTok{)}
+\NormalTok{sns.kdeplot(medias\_amostrais, color}\OperatorTok{=}\StringTok{"\#56B4E9"}\NormalTok{, linewidth}\OperatorTok{=}\FloatTok{2.5}\NormalTok{)}
 \NormalTok{plt.title(}\SpecialStringTok{f"Teorema Central do Limite (Tamanho da Amostra n = }\SpecialCharTok{\{}\NormalTok{n\_clt}\SpecialCharTok{\}}\SpecialStringTok{)"}\NormalTok{, fontsize}\OperatorTok{=}\DecValTok{14}\NormalTok{)}
 \NormalTok{plt.xlabel(}\StringTok{"Médias Amostrais (Distribuição Original: Exponencial)"}\NormalTok{)}
 \NormalTok{plt.ylabel(}\StringTok{"Densidade"}\NormalTok{)}
@@ -1538,8 +1544,10 @@ conexão com servidores externos.
 \StringTok{    \textless{}h1 class="titulo{-}principal"\textgreater{}Estatísticas Demográficas\textless{}/h1\textgreater{}}
 \StringTok{    \textless{}p class="resumo"\textgreater{}Este é um resumo dos dados do censo.\textless{}/p\textgreater{}}
 \StringTok{    \textless{}div id="dados{-}estatisticos"\textgreater{}}
-\StringTok{      \textless{}a href="https://exemplo.com/tabela\_norte.csv" class="link{-}dados"\textgreater{}Dados Região Norte\textless{}/a\textgreater{}}
-\StringTok{      \textless{}a href="https://exemplo.com/tabela\_sul.csv" class="link{-}dados"\textgreater{}Dados Região Sul\textless{}/a\textgreater{}}
+\StringTok{      \textless{}a href="https://exemplo.com/tabela\_norte.csv" }
+\StringTok{      class="link{-}dados"\textgreater{}Dados Região Norte\textless{}/a\textgreater{}}
+\StringTok{      \textless{}a href="https://exemplo.com/tabela\_sul.csv" }
+\StringTok{      class="link{-}dados"\textgreater{}Dados Região Sul\textless{}/a\textgreater{}}
 \StringTok{    \textless{}/div\textgreater{}}
 \StringTok{  \textless{}/body\textgreater{}}
 \StringTok{\textless{}/html\textgreater{}}
@@ -1938,7 +1946,7 @@ ao seu respectivo autor.
 \end{Shaded}
 
 \begin{verbatim}
-Total de citações coletadas: 60
+Total de citações coletadas: 100
                                              citacao            autor
 0  “The world as we have created it is a process ...  Albert Einstein
 1  “It is our choices, Harry, that show what we t...     J.K. Rowling
@@ -2060,7 +2068,11 @@ projeto obedeçam estritamente ao mesmo padrão visual.
 Essa modularidade é o que permite que uma equipe de dados se preocupe
 exclusivamente com a lógica estatística e o conteúdo, enquanto o
 template assume, nos bastidores, a responsabilidade de manter a
-apresentação com qualidade de publicação.
+apresentação com qualidade de publicação. O domínio dessas customizações
+avançadas e da estruturação de projetos e livros digitais no ecossistema
+do Quarto deve muito às contribuições da comunidade de desenvolvedores e
+educadores, destacando-se materiais práticos e tutoriais de referência
+como os desenvolvidos por Hall (2026).
 
 \section{Elementos Científicos e Tabelas
 Complexas}\label{elementos-cientuxedficos-e-tabelas-complexas}
@@ -2164,6 +2176,11 @@ estatística, na análise e na comunicação clara dos resultados.
 
 \phantomsection\label{refs}
 \begin{CSLReferences}{0}{1}
+\bibitem[\citeproctext]{ref-hall_quarto}
+HALL, Meghan. \textbf{Meghan Hall - Data Analysis, R, and Quarto}.,
+2026. Disponível em:
+\textless{}\url{https://meghan.rbind.io}\textgreater{}
+
 \bibitem[\citeproctext]{ref-harris2020array}
 HARRIS, Charles R. \emph{et al.} Array programming with NumPy.
 \textbf{Nature}, v. 585, n. 7825, p. 357--362, 2020.
