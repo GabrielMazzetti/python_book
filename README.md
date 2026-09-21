@@ -4,7 +4,7 @@
 [![Python](https://img.shields.io/badge/Python-3.x-FFD43B?logo=python&logoColor=blue)](#)
 
 > **Autor:** Gabriel Sanábio Mazzetti Affonso  
-> **Acesso Web (GitHub Pages):** [🔗 Clique aqui para ler o livro digital](https://gabrielmazzetti.github.io/python_book/)
+> **Acesso Web (GitHub Pages):** [🔗 Clique aqui para ler o livro digital](https://gabrielmazzetti.github.io/python_book/) <br>
 > **Versão em PDF:** [📥 Clique aqui para baixar o livro completo](./livro_python_scraping.pdf)  
 
 Este repositório contém o código-fonte e o material desenvolvido durante o período de Iniciação Científica, vinculado ao projeto **Métodos de Aprendizado Estatístico para Discriminação e Classificação: Aplicações à Indústria 4.0 – Fase 3** da Universidade Federal de Juiz de Fora (UFJF).
