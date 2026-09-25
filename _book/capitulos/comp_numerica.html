@@ -415,7 +415,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../capitulos/referencias.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Referências</span></span></a>
+ <span class="menu-text">Referências</span></a>
   </div>
 </li>
     </ul>
@@ -467,7 +467,7 @@ window.Quarto = {
 <p>A revolução trazida pelo <code>numpy</code> baseia-se na introdução de um novo objeto fundamental: o <em>array</em> multidimensional, conhecido pela classe <code>ndarray</code> (<em>n-dimensional array</em>) <span class="citation" data-cites="harris2020array">(<a href="referencias.html#ref-harris2020array" role="doc-biblioref">Harris et al., 2020</a>)</span>. Diferentemente das listas, um <code>ndarray</code> exige tipagem estática, o que significa que todos os elementos em seu interior devem ser estritamente do mesmo tipo (geralmente numérico). Essa homogeneidade permite que os dados sejam alocados na memória de forma adjacente, fazendo com que a eficiência dos cálculos se aproxime bastante a de linguagens compiladas, como o <em>C++</em>, por exemplo.</p>
 <p>Para o trabalho estatístico, a maior vantagem do <code>ndarray</code> é permitir a vetorização. Operações matemáticas aplicadas a um <em>array</em> são executadas em toda a estrutura simultaneamente, eliminando por completo a necessidade de escrever laços de repetição manuais (<em>for</em> ou <em>while</em>).</p>
 <p>O bloco de código a seguir ilustra a diferença na sintaxe e no comportamento ao realizarmos uma soma elemento a elemento entre dois vetores numéricos usando o <em>Python</em> puro e o <code>numpy</code>:</p>
-<div id="95783044" class="cell" data-execution_count="1">
+<div id="3aba571e" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -501,7 +501,7 @@ Soma com arrays do NumPy:  [11 22 33 44]</code></pre>
 <p>Além da criação, a manipulação da dimensionalidade é uma tarefa constante preparação dos dados, com a qual todo analista tem que lidar. Todo <em>array</em> do <code>numpy</code> possui o atributo <code>.shape</code>, que retorna uma tupla com o tamanho de cada dimensão, e o atributo <code>.ndim</code>, que indica o número total de dimensões (1 para vetores, 2 para matrizes, etc.).</p>
 <p>Caso seja necessário alterar a estrutura de um conjunto de dados sem modificar seus valores numéricos originais — como transformar um vetor unidimensional de 12 elementos em uma matriz bidimensional de 3 linhas e 4 colunas — o método <code>.reshape()</code> realiza essa transposição instantaneamente.</p>
 <p>O script a seguir demonstra essas ferramentas em ação:</p>
-<div id="85671467" class="cell" data-execution_count="2">
+<div id="cd9563a9" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Geração de matrizes básicas</span></span>
@@ -553,7 +553,7 @@ Novo Formato: (3, 4) | Dimensões: 2</code></pre>
 <p>Além da álgebra vetorizada, a manipulaçãqo de matrizes também requer métodos eficientes de filtragem. Para tal, o <em>R</em> oferece um suporte nativo da linguagem, que já é vetorizada em sua base. No <em>Python</em>, é o <code>numpy</code> que reproduz essa característica, através da Indexação Booleana (ou Máscara Booleana).</p>
 <p>Ao aplicarmos uma condição lógica a um <code>ndarray</code> (por exemplo, vetor &gt; 5), a biblioteca não avalia a estrutura inteira como uma única expressão, mas sim elemento a elemento, retornando um novo <em>array</em> contendo valores lógicos (<em>True</em> ou <em>False</em>). Ao passarmos essa “máscara” dentro dos colchetes do <em>array</em> original, o <code>numpy</code> filtra e retorna exclusivamente os elementos onde a condição for verdadeira.</p>
 <p>O código a seguir demonstra o poder combinado do <em>Broadcasting</em> e das indexações lógicas:</p>
-<div id="083f5481" class="cell" data-execution_count="3">
+<div id="721897f7" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -604,7 +604,7 @@ Valores pares maiores que 10: [12 22 18]</code></pre>
 <p><strong>2. Convergência Assintótica (Teorema Central do Limite)</strong></p>
 <p><em>O Teorema Central do Limite (TCL)</em> postula que a distribuição das médias amostrais de variáveis independentes e identicamente distribuídas converge assintoticamente para uma distribuição Normal à medida que o tamanho da amostra (<span class="math inline">\(n\)</span>) cresce, independentemente da distribuição original dos dados. Simularemos milhares de amostras extraídas de uma distribuição estritamente Exponencial (fortemente assimétrica) e utilizaremos o <code>seaborn</code> (visto no Capítulo 4) para plotar a densidade das médias, revelando o inconfundível formato de sino.</p>
 <p>O script a seguir realiza essas duas simulações:</p>
-<div id="9e41e607" class="cell" data-execution_count="4">
+<div id="e250a0b9" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
