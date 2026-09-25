@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Nome">
 
-<title>Capítulo 7: Estruturação de Relatórios – Python, Web Scraping e Livros Digitais: Uma Introdução</title>
+<title>7&nbsp; Livros Digitais: Estruturação de relatórios dinâmicos via Quarto – Python, Web Scraping e Livros Digitais: Uma Introdução</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -378,7 +377,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../capitulos/referencias.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Referências</span></span></a>
+ <span class="menu-text">Referências</span></a>
   </div>
 </li>
     </ul>
@@ -405,7 +404,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Capítulo 7: Estruturação de Relatórios</h1>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Livros Digitais: Estruturação de relatórios dinâmicos via <em>Quarto</em></span></h1>
 </div>
 
 
@@ -435,6 +434,22 @@ window.Quarto = {
 <p>Todo documento Quarto é dividido fundamentalmente em três partes: o cabeçalho de metadados, o texto em marcação (<em>Markdown</em>) e os blocos de código executáveis (<em>chunks</em>). O controle do comportamento do documento ocorre primordialmente no topo do arquivo, em uma seção isolada por três traços (<code>---</code>), escrita em uma linguagem de serialização chamada YAML (<em>YAML Ain’t Markup Language</em>).</p>
 <p>É no <em>YAML</em> que definimos as diretrizes globais do projeto: o motor de renderização, o formato de saída, as opções padrão de execução dos códigos e a padronização do leiaute.</p>
 <p>Quando trabalhamos com projetos escaláveis ou livros com múltiplos capítulos, é imperativo garantir uma identidade visual coesa e um rastreamento interno eficiente. Para isso, configuramos referências customizadas. O exemplo abaixo demonstra um cabeçalho <em>YAML</em> profissional, pronto para produção, que aplica a configuração de estilo definida para os seus projetos (que chamaremos de “Meu template”) e estabelece o identificador interno exigido (que será “m_template”):</p>
+<pre class="{markdown}"><code>---
+title: "Capítulo 7: Estruturação de Relatórios"
+author: "Nome"
+format:
+  html:
+    theme: cosmo
+    template: "Meu template"
+    toc: true
+    toc-title: "Neste Capítulo"
+project:
+  id: "m_template"
+execute:
+  echo: true
+  warning: false
+  message: false
+---</code></pre>
 <p>Vamos entender as chaves deste cabeçalho:</p>
 <ul>
 <li><p>A subchave <code>template</code> sob <code>format:</code> garante que, independentemente do capítulo renderizado, a identidade visual carregue estritamente as customizações do “Meu Template”.</p></li>
@@ -905,7 +920,7 @@ HALL, Meghan. <strong>Meghan Hall - Data Analysis, R, and Quarto</strong>., 2026
   </div>
   <div class="nav-page nav-page-next">
       <a href="../capitulos/referencias.html" class="pagination-link" aria-label="Referências">
-        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Referências</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text">Referências</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

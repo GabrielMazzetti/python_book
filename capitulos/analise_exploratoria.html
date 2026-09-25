@@ -386,7 +386,7 @@ div.csl-indent {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../capitulos/referencias.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Referências</span></span></a>
+ <span class="menu-text">Referências</span></a>
   </div>
 </li>
     </ul>
@@ -466,7 +466,7 @@ div.csl-indent {
 <h3 data-number="4.4.1" class="anchored" data-anchor-id="análise-de-dados-categóricos-titanic"><span class="header-section-number">4.4.1</span> Análise de Dados Categóricos: <em>Titanic</em></h3>
 <p>O conjunto de dados do naufrágio do <code>Titanic</code> é ideal para a exploração de tabelas de contingência e distribuições de frequência. No <em>Python</em>, a função <code>pd.crosstab()</code> do pandas atua de forma muito semelhante à clássica função <code>table()</code> do <em>R</em>, permitindo o cruzamento rápido entre variáveis qualitativas.</p>
 <p>No script abaixo, importamos as bibliotecas necessárias, carregamos os dados, removemos rapidamente os valores ausentes de uma coluna de interesse estrutural e geramos a tabela de contingência cruzando a classe do passageiro com o status de sobrevivência. Em seguida, utilizamos o seaborn para criar um gráfico de barras.</p>
-<div id="d5c865e2" class="cell" data-execution_count="1">
+<div id="24793e2b" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -512,7 +512,7 @@ Second        97   87
 Third        372  119</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>C:\Users\gabri\AppData\Local\Temp\ipykernel_12520\2615282862.py:23: UserWarning: The palette list has more values (3) than needed (2), which may not be intended.
+<pre><code>C:\Users\gabri\AppData\Local\Temp\ipykernel_27536\2615282862.py:23: UserWarning: The palette list has more values (3) than needed (2), which may not be intended.
   sns.countplot(</code></pre>
 </div>
 <div class="cell-output cell-output-display">
@@ -529,7 +529,7 @@ Third        372  119</code></pre>
 <p>A base <code>Iris</code>, introduzida pelo estatístico <em>Ronald Fisher</em> em 1936, é o exemplo definitivo para o estudo de distribuições contínuas e análise de correlação entre múltiplas variáveis numéricas (como comprimento e largura de pétalas e sépalas).</p>
 <p>Antes de partirmos para a visualização, a extração de métricas de posição e dispersão é o passo primário para a compreensão de variáveis contínuas. No <em>R</em>, essa tarefa é comumente realizada através da função <code>summary()</code>. No <em>Python</em>, a biblioteca <code>pandas</code> fornece o método <code>.describe()</code>, que calcula instantaneamente a contagem, a média, o desvio padrão e os quartis de todas as colunas numéricas do <em>DataFrame</em>.</p>
 <p>Enquanto as métricas descritivas resumem os dados, a exploração de dados contínuos exige uma abordagem visual para a identificação de padrões lineares ou de agrupamentos (<em>clusters</em>). O gráfico de dispersão (<em>scatterplot</em>) é a ferramenta analítica primária para esse fim. O <code>seaborn</code> permite estratificar esses pontos facilmente através do parâmetro <code>hue</code>, colorindo as observações com base em uma variável categórica, como a espécie da flor.</p>
-<div id="2a7d3731" class="cell" data-execution_count="2">
+<div id="dc16a27a" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Carregando a base de dados</span></span>
